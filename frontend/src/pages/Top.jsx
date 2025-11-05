@@ -43,7 +43,7 @@ function Top() {
         <div 
           className="absolute inset-0 z-10" 
           style={{
-            background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(251, 191, 36, 0.2) 100%)'
+            background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(251, 191, 36, 0.2) 100%)'
           }}
         ></div>
         
