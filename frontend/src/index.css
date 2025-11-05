@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+/* ブランドカラーとフォントの定義 */
+:root {
+  --color-brand-primary: #14213d;
+  --color-brand-secondary: #48b6e8;
+  --color-brand-accent: #f59e0b;
+  --color-brand-success: #10b981;
+  --color-brand-warning: #f59e0b;
+  --color-brand-error: #ef4444;
+}
+
+/* カスタムユーティリティクラス */
+.bg-brand-primary { background-color: var(--color-brand-primary); }
+.bg-brand-secondary { background-color: var(--color-brand-secondary); }
+.bg-brand-accent { background-color: var(--color-brand-accent); }
+.text-brand-primary { color: var(--color-brand-primary); }
+.text-brand-secondary { color: var(--color-brand-secondary); }
+.text-brand-accent { color: var(--color-brand-accent); }
+.border-brand-primary { border-color: var(--color-brand-primary); }
+
+/* フォントファミリー */
+.font-brand { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+
+/* 動画背景のフォールバック */
+.hero-video-fallback {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%);
+}
+
