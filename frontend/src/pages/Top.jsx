@@ -32,15 +32,20 @@ function Top() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 w-full h-full object-cover z-0 brightness-90 contrast-110 hue-rotate-180 saturate-125 blur-sm"
         >
           <source src="/videos/computerwork.mp4" type="video/mp4" />
           {/* フォールバック用の画像 */}
           Your browser does not support the video tag.
         </video>
         
-        {/* 動画の上に重ねるオーバーレイ */}
-        <div className="absolute inset-0 z-10" style={{backgroundColor: 'rgba(105, 105, 105, 0.6)'}}></div>
+        {/* 動画の上に重ねるオーバーレイ（青×黄色グラデーション） */}
+        <div 
+          className="absolute inset-0 z-10" 
+          style={{
+            background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(251, 191, 36, 0.2) 100%)'
+          }}
+        ></div>
         
         {/* コンテンツ */}
         <div className="relative z-20 max-w-6xl mx-auto text-center px-6">
@@ -52,7 +57,7 @@ function Top() {
           </p>
           <a
             href="/contact"
-            className="inline-block bg-white text-black px-8 py-3 rounded-md font-semibold hover:bg-brand-gray transition shadow-lg"
+            className="inline-block bg-white text-[#14213d] px-8 py-3 rounded-md font-semibold hover:bg-[#48b6e8] hover:text-white transition"
           >
             お問い合わせへ
           </a>
@@ -68,16 +73,18 @@ function Top() {
           <div className="flex flex-col md:flex-row items-center gap-12">
             {/* テキスト部分 */}
             <div className="flex-1">
-              <p className="text-lg text-neutral-700 mb-8 leading-relaxed">
+              <p className="text-lg text-neutral-700 mb-8 leading-relaxed text-left">
                 Reang（リアング）はReact＋Djangoという技術を使ったモダンなシステム開発を軸に、
                 中小企業や個人事業主のDXを支援しています。
               </p>
+              <div className="text-left">
               <a
                 href="/about"
-                className="inline-block bg-gray-100 text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-brand-sky transition"
+                className="inline-block text-[#14213d] bg-white px-8 py-3 rounded-md font-semibold hover:bg-[#14213d] hover:text-white transition"
               >
                 事業概要を見る
               </a>
+              </div>
             </div>
             
             {/* 画像部分 */}

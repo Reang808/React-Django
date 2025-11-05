@@ -22,7 +22,7 @@ function Footer() {
           <div className="flex space-x-4">
             {/* Facebook */}
             <a
-              href="https://facebook.com/your-page"
+              href="https://www.facebook.com/780813908451391"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity duration-200"
@@ -37,7 +37,7 @@ function Footer() {
 
             {/* Instagram */}
             <a
-              href="https://instagram.com/your-account"
+              href="https://www.instagram.com/systemreang/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-pink-600 transition-colors duration-200"
@@ -52,7 +52,7 @@ function Footer() {
 
             {/* LINE */}
             <a
-              href="https://line.me/ti/p/your-line-id"
+              href="https://linevoom.line.me/user/_dUXiZG-QzYilD8hygKJSa1HU5xfLbnqvpln54bA"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-green-500 transition-colors duration-200"
@@ -67,7 +67,7 @@ function Footer() {
 
             {/* GitHub */}
             <a
-              href="https://github.com/your-username"
+              href="https://github.com/Reang808"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
