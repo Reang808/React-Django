@@ -1,0 +1,15 @@
+[build]
+  # ビルド出力ディレクトリ
+  publish = "dist"
+  # ビルドコマンド
+  command = "npm run build"
+
+[[redirects]]
+  # すべてのルートをindex.htmlにリダイレクト（SPA用）
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  # Node.jsのバージョンを指定（オプション）
+  NODE_VERSION = "18"
