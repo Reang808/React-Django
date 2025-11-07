@@ -2,7 +2,7 @@
 Django==5.2.8
 djangorestframework==3.16.1
 
-# Database
+# Database (PostgreSQL)
 psycopg2-binary==2.9.11
 
 # CORS Headers

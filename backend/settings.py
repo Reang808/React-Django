@@ -28,8 +28,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'api.reang.jp',
     '163.44.96.248',
-    'localhost',
-    '127.0.0.1',
+    'localhost',  # 開発用（必要に応じて削除）
+    '127.0.0.1',  # 開発用（必要に応じて削除）
 ]
 
 
@@ -85,12 +85,13 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# 本番環境用PostgreSQL設定
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'reang_db',
         'USER': 'reang_user',
-        'PASSWORD': 'your_secure_password_here',
+        'PASSWORD': 'Retsushi.0718',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -181,16 +182,16 @@ CSRF_TRUSTED_ORIGINS = [
     "http://api.reang.jp",
 ]
 
-# 本番環境でのセキュリティ設定
-CSRF_COOKIE_SECURE = True  # HTTPS使用時はTrue
+# 本番環境用セキュリティ設定
+CSRF_COOKIE_SECURE = True   # HTTPS必須
 CSRF_COOKIE_HTTPONLY = True
 
-# 本番環境用追加セキュリティ設定
-SECURE_SSL_REDIRECT = True  # HTTPからHTTPSへの自動リダイレクト
+# HTTPS強制設定
+SECURE_SSL_REDIRECT = True  # HTTPからHTTPSへ自動リダイレクト
 SECURE_HSTS_SECONDS = 31536000  # 1年間のHSTS
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
-SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True   # HTTPS必須
 SESSION_COOKIE_HTTPONLY = True
 
 
