@@ -20,12 +20,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t_5tto^&4dthx2ozhaz-uavt^p3tw@)2ry6te3f)%6c^^adr-m'
+SECRET_KEY = 'hhd#5+qp_r*e*co#jlo!g_5hw&6znc5j8*9*ue1e2zuso$5o5='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'api.reang.jp',
+    '163.44.96.248',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -82,8 +87,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'reang_db',
+        'USER': 'reang_user',
+        'PASSWORD': 'your_secure_password_here',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -122,7 +131,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -147,25 +157,41 @@ REST_FRAMEWORK = {
 
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React開発サーバー
+    "http://localhost:3000",  # React開発サーバー（開発用）
     "http://127.0.0.1:3000",
-    "http://localhost:5173",  # Vite開発サーバー（もしViteを使用している場合）
+    "http://localhost:5173",  # Vite開発サーバー（開発用）
     "http://127.0.0.1:5173",
+    "https://reang.jp",       # 本番フロントエンド
+    "http://reang.jp",
+    "https://api.reang.jp",   # 本番API
+    "http://api.reang.jp",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
-# 開発環境でのCSRF設定
+# CSRF設定
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
+    "http://localhost:3000",    # 開発用
     "http://127.0.0.1:3000",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://reang.jp",         # 本番用
+    "http://reang.jp",
+    "https://api.reang.jp",
+    "http://api.reang.jp",
 ]
 
-# APIエンドポイントのCSRF免除（REST APIの場合）
-CSRF_COOKIE_SECURE = False
-CSRF_COOKIE_HTTPONLY = False
+# 本番環境でのセキュリティ設定
+CSRF_COOKIE_SECURE = True  # HTTPS使用時はTrue
+CSRF_COOKIE_HTTPONLY = True
+
+# 本番環境用追加セキュリティ設定
+SECURE_SSL_REDIRECT = True  # HTTPからHTTPSへの自動リダイレクト
+SECURE_HSTS_SECONDS = 31536000  # 1年間のHSTS
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
 
 
 # Email settings
