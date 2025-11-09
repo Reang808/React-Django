@@ -28,8 +28,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'api.reang.jp',
     '163.44.96.248',
-    'localhost',  # 開発用（必要に応じて削除）
-    '127.0.0.1',  # 開発用（必要に応じて削除）
+    # 'localhost',  # 開発用（必要に応じて削除）
+    # '127.0.0.1',  # 開発用（必要に応じて削除）
 ]
 
 
@@ -181,7 +181,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://api.reang.jp",
     "http://api.reang.jp",
 ]
-
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # 本番環境用セキュリティ設定
 CSRF_COOKIE_SECURE = True   # HTTPS必須
 CSRF_COOKIE_HTTPONLY = True
