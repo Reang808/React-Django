@@ -8,14 +8,14 @@ function Top() {
       title: 'Web開発',
       desc: 'ReactとDjangoを活用したフルスタック開発で、モダンで高性能なWebサイトを構築します。',
       link: '/service',
-      image: '/images/buridge.jpg',
+      image: '/images/coding-photo.jpg',
       alt: 'Web開発のイメージ'
     },
     dx: {
       title: 'DX支援',
       desc: '業務効率化・自動化・データ分析など、企業の課題をテクノロジーで解決します。',
       link: '/service',
-      image: '/images/city-1-1400w.jpg',
+      image: '/images/profile.png',
       alt: 'DX支援のイメージ'
     },
   };
@@ -26,26 +26,20 @@ function Top() {
     <div className="min-h-screen bg-white text-brand-black">
       {/* Hero Section */}
       <section className="relative overflow-hidden text-white py-24  flex items-center">
-        {/* 背景動画 */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0 brightness-90 contrast-110 hue-rotate-180 saturate-125 blur-sm"
-        >
-          <source src="/videos/computerwork.mp4" type="video/mp4" />
-          {/* フォールバック用の画像 */}
-          Your browser does not support the video tag.
-        </video>
+        {/* 背景画像 */}
+        <img
+          src="/images/buridge.jpg"
+          alt="背景画像"
+          className="absolute inset-0 w-full h-full object-cover z-0 blur-sm"
+        />
         
         {/* 動画の上に重ねるオーバーレイ（青×黄色グラデーション） */}
-        <div 
+        {/* <div 
           className="absolute inset-0 z-10" 
           style={{
             background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(251, 191, 36, 0.2) 100%)'
           }}
-        ></div>
+        ></div> */}
         
         {/* コンテンツ */}
         <div className="relative z-20 max-w-6xl mx-auto text-center px-6">
@@ -90,7 +84,7 @@ function Top() {
             {/* 画像部分 */}
             <div className="flex-1 max-w-md">
               <img
-                src="/images/coding-photo.jpg"
+                src="/images/IMG_1338.jpg"
                 alt="コーディング中の烈志"
                 className="w-full h-auto rounded-lg shadow-lg object-cover hover:shadow-xl transition-shadow duration-300"
               />

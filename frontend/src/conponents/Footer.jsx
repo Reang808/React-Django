@@ -37,7 +37,7 @@ function Footer() {
 
             {/* Instagram */}
             <a
-              href="https://www.instagram.com/systemreang/"
+              href="https://www.instagram.com/reang_develop/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-pink-600 transition-colors duration-200"

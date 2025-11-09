@@ -135,7 +135,7 @@ function About() {
                   開発中の様子、学習記録、技術の備忘録など、リアルな情報をお届けします。
                 </p>
                 <a
-                  href="https://instagram.com/your-account"
+                  href="https://www.instagram.com/reang_develop/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center bg-linear-to-r from-pink-500 to-purple-600 text-white px-6 py-2 rounded-md font-medium hover:from-pink-600 hover:to-purple-700 transition-all duration-200"
