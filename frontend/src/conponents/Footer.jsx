@@ -89,6 +89,7 @@ function Footer() {
             <li><Link to="/" className="text-gray-600 hover:text-gray-900 transition">Home</Link></li>
             <li><Link to="/about" className="text-gray-600 hover:text-gray-900 transition">About</Link></li>
             <li><Link to="/service" className="text-gray-600 hover:text-gray-900 transition">Service</Link></li>
+            <li><Link to="/news" className="text-gray-600 hover:text-gray-900 transition">News</Link></li>
             <li><Link to="/contact" className="text-gray-600 hover:text-gray-900 transition">Contact</Link></li>
             <li><Link to="/privacy" className="text-gray-600 hover:text-gray-900 transition">プライバシーポリシー</Link></li>
           </ul>
