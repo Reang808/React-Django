@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'hhd#5+qp_r*e*co#jlo!g_5hw&6znc5j8*9*ue1e2zuso$5o5='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True  # 一時的にTrueでデバッグ（本番では必ずFalseに戻す）
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'api.reang.jp',
