@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getLatestNews, formatDate } from '../utils/newsData';
 
 function Top() {
   const [active, setActive] = useState('web');
@@ -161,47 +162,56 @@ function Top() {
         </div>
       </section>
       <section className="py-24 bg-white">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-brand-black mb-6 border-l-4 border-brand-navy pl-3 text-left">
-            News
-          </h2>
-          <div className="bg-linear-to-r from-pink-50 to-purple-50 rounded-lg p-8 shadow-md">
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              {/* テキスト部分 */}
-              <div className="flex-1 text-left order-2 md:order-1">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  <img 
-                    src="/images/Instagram.png" 
-                    alt="Instagram" 
-                    className="w-10 h-10 mr-2 object-contain"
-                  /> 🎉 Instagram始めました！
-                </h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  日々の活動の裏側を公開しています。<br />
-                  開発中の様子、学習記録、技術の備忘録など、リアルな情報をお届けします。
-                </p>
-                <a
-                  href="https://instagram.com/your-account"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center bg-linear-to-r from-pink-500 to-purple-600 text-white px-6 py-2 rounded-md font-medium hover:from-pink-600 hover:to-purple-700 transition-all duration-200"
-                >
-                  
-                  Instagramをフォロー
-                </a>
-              </div>
-              
-              {/* 写真部分 */}
-              <div className="shrink-0 order-1 md:order-2">
-                <div className="w-80 h-80rounded-lg overflow-hidden shadow-lg border-2 border-white">
-                  <img 
-                    src="/images/image.png" 
-                    alt="News写真" 
-                    className="w-full h-full object-cover"
-                  />
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-brand-black border-l-4 border-brand-navy pl-3">
+              News
+            </h2>
+            <a
+              href="/news"
+              className="text-brand-navy hover:text-[#48b6e8] font-medium transition-colors duration-200 flex items-center"
+            >
+              すべて見る
+              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+          
+          <div className="space-y-6">
+            {getLatestNews(3).map((article) => (
+              <div key={article.id} className="bg-gray-50 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+                <div className="flex gap-4">
+                  <div className="w-24 sm:w-28 md:w-32 shrink-0">
+                    
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-auto sm:h-auto md:h-auto object-cover rounded-md"
+                    />
+                  </div>
+                  <div className="flex-1">
+
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                      <span className="inline-block bg-brand-navy text-gray-800 text-xs px-2 py-1 rounded-full">
+                        {article.category}
+                      </span>
+                      
+                      
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2 hover:text-brand-primary transition-colors">
+                      <a href={`/news/${article.slug}`}>
+                        {article.title}
+                      </a>
+                    </h3>
+                    <span className="text-sm text-gray-500 mb-1 md:mb-0">
+                        {formatDate(article.date)}
+                      </span>
+                    
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

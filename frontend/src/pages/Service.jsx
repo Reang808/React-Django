@@ -33,7 +33,7 @@ function Service() {
   return (
     <div className="min-h-screen bg-white text-neutral-900 font-[Work_Sans,sans-serif]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#057ab09a] to-[#10b981] text-gray-800 py-24">
+      <section className="bg-gradient-to-t from-[#48b6e8]  to-white text-[#14213d]  py-24">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">サービス一覧</h1>
           <p className="text-lg text-gray-900">
