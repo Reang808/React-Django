@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'hhd#5+qp_r*e*co#jlo!g_5hw&6znc5j8*9*ue1e2zuso$5o5='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True  # 一時的にTrueでデバッグ（本番では必ずFalseに戻す）
 
 ALLOWED_HOSTS = [
     'api.reang.jp',
@@ -171,28 +171,71 @@ REST_FRAMEWORK = {
 
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React開発サーバー（開発用）
-    "http://127.0.0.1:3000",
-    "http://localhost:5173",  # Vite開発サーバー（開発用）
-    "http://127.0.0.1:5173",
-    "https://reang.jp",       # 本番フロントエンド
-    "http://reang.jp",
-    "https://api.reang.jp",   # 本番API
-    "http://api.reang.jp",
-]
-
-CORS_ALLOW_CREDENTIALS = True
-
-# CSRF設定
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",    # 開発用
+    # 開発環境
+    "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://reang.jp",         # 本番用
+    
+    # 本番環境（メインドメイン）
+    "https://reang.jp",
     "http://reang.jp",
+    "https://www.reang.jp",
+    "http://www.reang.jp",
+    
+    # 本番環境（API）
     "https://api.reang.jp",
     "http://api.reang.jp",
+    
+    # Netlify/Vercel等のデプロイ先（必要に応じて追加）
+    "https://reang.netlify.app",
+    "https://reang-jp.netlify.app",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = False  # セキュリティのためFalse推奨
+
+# 追加のCORS設定
+CORS_ALLOWED_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+# CSRF設定
+CSRF_TRUSTED_ORIGINS = [
+    # 開発環境
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    
+    # 本番環境
+    "https://reang.jp",
+    "http://reang.jp",
+    "https://www.reang.jp",
+    "http://www.reang.jp",
+    "https://api.reang.jp",
+    "http://api.reang.jp",
+    
+    # デプロイ先
+    "https://reang.netlify.app",
+    "https://reang-jp.netlify.app",
 ]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # 本番環境用セキュリティ設定
