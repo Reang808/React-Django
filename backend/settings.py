@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'hhd#5+qp_r*e*co#jlo!g_5hw&6znc5j8*9*ue1e2zuso$5o5='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True  # 一時的にTrueでデバッグ
 
 ALLOWED_HOSTS = [
     'api.reang.jp',
@@ -193,7 +193,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_ALL_ORIGINS = False  # セキュリティのためFalse推奨
+CORS_ALLOW_ALL_ORIGINS = True  # 一時的にTrue（デバッグ用）
 
 # 追加のCORS設定
 CORS_ALLOWED_HEADERS = [
@@ -238,16 +238,16 @@ CSRF_TRUSTED_ORIGINS = [
     "https://reang-jp.netlify.app",
 ]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# 本番環境用セキュリティ設定
-CSRF_COOKIE_SECURE = True   # HTTPS必須
+# 本番環境用セキュリティ設定（一時的に緩和）
+CSRF_COOKIE_SECURE = False   # HTTPS必須
 CSRF_COOKIE_HTTPONLY = True
 
-# HTTPS強制設定
-SECURE_SSL_REDIRECT = True  # HTTPからHTTPSへ自動リダイレクト
-SECURE_HSTS_SECONDS = 31536000  # 1年間のHSTS
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SESSION_COOKIE_SECURE = True   # HTTPS必須
+# HTTPS強制設定（一時的に無効化）
+SECURE_SSL_REDIRECT = False  # HTTPからHTTPSへ自動リダイレクト
+SECURE_HSTS_SECONDS = 0  # 1年間のHSTS
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_HSTS_PRELOAD = False
+SESSION_COOKIE_SECURE = False   # HTTPS必須
 SESSION_COOKIE_HTTPONLY = True
 
 
@@ -265,3 +265,20 @@ EMAIL_HOST_PASSWORD = 'selt sqpp frby xvjq'  # アプリパスワード
 # メール設定
 DEFAULT_FROM_EMAIL = 'noreply@reang.jp'  # 送信元メールアドレス
 CONTACT_EMAIL = 'info@reang.jp'  # 問い合わせ通知先
+
+# ログ設定（デバッグ用）
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+    },
+}
