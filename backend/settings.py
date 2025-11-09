@@ -28,6 +28,8 @@ DEBUG = True  # 一時的にTrueでデバッグ
 ALLOWED_HOSTS = [
     'api.reang.jp',
     '163.44.96.248',
+    'reang.jp',         # メインドメイン追加
+    'www.reang.jp',     # www サブドメイン追加
     # 'localhost',  # 開発用（必要に応じて削除）
     # '127.0.0.1',  # 開発用（必要に応じて削除）
 ]
