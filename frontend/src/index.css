@@ -27,3 +27,81 @@
   background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%);
 }
 
+/* 記事コンテンツのスタイル */
+.article-content {
+  white-space: pre-line; /* 改行を保持 */
+  line-height: 1.7;
+}
+
+.article-content p {
+  margin-bottom: 1rem;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6 {
+  margin: 1.5rem 0 1rem 0;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.article-content h1 { font-size: 2rem; }
+.article-content h2 { font-size: 1.75rem; }
+.article-content h3 { font-size: 1.5rem; }
+.article-content h4 { font-size: 1.25rem; }
+
+.article-content ul,
+.article-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.article-content li {
+  margin-bottom: 0.5rem;
+}
+
+.article-content blockquote {
+  border-left: 4px solid var(--color-brand-primary);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  background-color: #f8fafc;
+  padding: 1rem;
+  border-radius: 0.375rem;
+}
+
+.article-content code {
+  background-color: #f1f5f9;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+}
+
+.article-content pre {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.article-content pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.article-content a {
+  color: var(--color-brand-secondary);
+  text-decoration: underline;
+}
+
+.article-content a:hover {
+  color: var(--color-brand-primary);
+}
+

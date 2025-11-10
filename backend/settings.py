@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     
     # Local apps
     'contact',
+    'news',
 ]
 
 MIDDLEWARE = [
@@ -142,6 +143,10 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+# Media files (User uploaded content)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # WhiteNoise設定（本番環境用）
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

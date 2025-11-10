@@ -1,8 +1,11 @@
-import { useState } from 'react';
-import { getLatestNews, formatDate } from '../utils/newsData';
+import { useState, useEffect } from 'react';
+import { newsAPI, formatDate, transformArticleData } from '../services/newsAPI';
 
 function Top() {
   const [active, setActive] = useState('web');
+  const [latestNews, setLatestNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const services = {
     web: {
@@ -22,6 +25,29 @@ function Top() {
   };
 
   const activeService = services[active];
+
+  // 最新記事を取得
+  useEffect(() => {
+    const fetchLatestNews = async () => {
+      try {
+        setLoading(true);
+        const response = await newsAPI.getLatestArticles(3);
+        const transformedArticles = response.results 
+          ? response.results.map(transformArticleData)
+          : response.map(transformArticleData);
+        setLatestNews(transformedArticles);
+      } catch (err) {
+        console.error('ニュース取得エラー:', err);
+        setError('ニュースの取得に失敗しました');
+        // エラー時はダミーデータを表示（フォールバック）
+        setLatestNews([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLatestNews();
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-brand-black">
@@ -179,7 +205,25 @@ function Top() {
           </div>
           
           <div className="space-y-6">
-            {getLatestNews(3).map((article) => (
+            {loading ? (
+              // ローディング表示
+              <div className="text-center py-8">
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-brand-navy"></div>
+                <p className="mt-2 text-gray-600">読み込み中...</p>
+              </div>
+            ) : error ? (
+              // エラー表示
+              <div className="text-center py-8">
+                <p className="text-red-600">{error}</p>
+              </div>
+            ) : latestNews.length === 0 ? (
+              // 記事がない場合
+              <div className="text-center py-8">
+                <p className="text-gray-600">まだ記事がありません</p>
+              </div>
+            ) : (
+              // 記事一覧表示
+              latestNews.map((article) => (
               <div key={article.id} className="bg-gray-50 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
                 <div className="flex gap-4">
                   <div className="w-24 sm:w-28 md:w-32 shrink-0">
@@ -199,11 +243,11 @@ function Top() {
                       
                       
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 hover:text-brand-primary transition-colors">
+                    <h4 className="text-sm font-semibold text-gray-900 mb-2 hover:text-brand-primary transition-colors">
                       <a href={`/news/${article.slug}`}>
                         {article.title}
                       </a>
-                    </h3>
+                    </h4>
                     <span className="text-sm text-gray-500 mb-1 md:mb-0">
                         {formatDate(article.date)}
                       </span>
@@ -211,7 +255,8 @@ function Top() {
                   </div>
                 </div>
               </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </section>

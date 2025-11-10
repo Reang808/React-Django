@@ -1,9 +1,59 @@
 import { useParams, Link } from 'react-router-dom';
-import { getNewsBySlug, formatDate } from '../utils/newsData';
+import { useState, useEffect } from 'react';
+import { newsAPI, formatDate, transformArticleData } from '../services/newsAPI';
 
 function NewsDetail() {
   const { slug } = useParams();
-  const article = getNewsBySlug(slug);
+  const [article, setArticle] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        setLoading(true);
+        const response = await newsAPI.getArticle(slug);
+        setArticle(transformArticleData(response));
+      } catch (err) {
+        console.error('記事取得エラー:', err);
+        setError('記事の取得に失敗しました');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (slug) {
+      fetchArticle();
+    }
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-brand-primary"></div>
+          <p className="mt-4 text-gray-600">記事を読み込み中...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">エラーが発生しました</h1>
+          <p className="text-gray-600 mb-6">{error}</p>
+          <Link
+            to="/news"
+            className="inline-block bg-brand-navy text-white px-6 py-3 rounded-md hover:bg-[#48b6e8] transition-colors duration-200"
+          >
+            ニュース一覧に戻る
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   // 記事が見つからない場合
   if (!article) {
@@ -47,14 +97,14 @@ function NewsDetail() {
         <div className="max-w-4xl mx-auto px-6">
           <div className="mb-6">
             <span className="inline-block bg-brand-navy text-white text-sm px-3 py-1 rounded-full mb-4">
-              {article.category}
+              {article?.category}
             </span>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
-              {article.title}
+              {article?.title}
             </h1>
             <div className="flex items-center text-gray-600 text-sm">
-              <time dateTime={article.date}>
-                {formatDate(article.date)}
+              <time dateTime={article?.date}>
+                {article?.date && formatDate(article.date)}
               </time>
             </div>
           </div>
@@ -62,8 +112,8 @@ function NewsDetail() {
           {/* アイキャッチ画像 */}
           <div className="aspect-w-16 aspect-h-9 mb-8">
             <img
-              src={article.image}
-              alt={article.title}
+              src={article?.image || '/images/default-news.jpg'}
+              alt={article?.title || 'ニュース画像'}
               className="w-full h-96 object-cover rounded-lg shadow-md"
             />
           </div>
@@ -77,7 +127,7 @@ function NewsDetail() {
             {/* HTMLコンテンツを安全にレンダリング */}
             <div 
               className="article-content leading-relaxed text-gray-800"
-              dangerouslySetInnerHTML={{ __html: article.content }}
+              dangerouslySetInnerHTML={{ __html: article?.content || '' }}
             />
           </div>
 
