@@ -1,0 +1,53 @@
+/* 管理画面カスタムスタイル */
+
+/* テキストエリアの改善 */
+.field-content textarea,
+.field-excerpt textarea {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    padding: 10px !important;
+}
+
+/* 記事本文エリアの特別スタイル */
+.field-content textarea {
+    min-height: 400px !important;
+    background-color: black !important;
+}
+
+/* 要約エリアのスタイル */
+.field-excerpt textarea {
+    min-height: 100px !important;
+    background-color: black !important;
+}
+
+/* フィールドセットの改善 */
+.module h2 {
+    background: #417690 !important;
+    color: white !important;
+    padding: 10px 15px !important;
+    margin: 0 !important;
+    font-weight: bold !important;
+}
+
+/* 画像プレビューの改善 */
+.field-image_preview img {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* フォームの全体的なレイアウト改善 */
+.form-row {
+    margin-bottom: 20px !important;
+}
+
+/* ヘルプテキストのスタイル */
+.help {
+    color: #666 !important;
+    font-size: 12px !important;
+    font-style: italic !important;
+    margin-top: 5px !important;
+}

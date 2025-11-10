@@ -10,11 +10,15 @@ class NewsAPI {
   async fetchWithConfig(endpoint, options = {}) {
     const url = `${this.baseURL}${endpoint}`;
     
+    // デバッグ用ログ
+    console.log('API Request:', url);
+    
     const defaultOptions = {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
+      mode: 'cors', // CORS明示的に設定
     };
     
     const config = { ...defaultOptions, ...options };
@@ -22,13 +26,23 @@ class NewsAPI {
     try {
       const response = await fetch(url, config);
       
+      console.log('API Response status:', response.status);
+      
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
       }
       
-      return await response.json();
+      const data = await response.json();
+      console.log('API Response data:', data);
+      return data;
     } catch (error) {
-      console.error('API Error:', error);
+      console.error('API Error:', {
+        url,
+        error: error.message,
+        stack: error.stack
+      });
       throw error;
     }
   }

@@ -23,15 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'hhd#5+qp_r*e*co#jlo!g_5hw&6znc5j8*9*ue1e2zuso$5o5='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True  # 一時的にTrueでデバッグ
+DEBUG = False  # 一時的にTrueでデバッグ
 
 ALLOWED_HOSTS = [
     'api.reang.jp',
     '163.44.96.248',
     'reang.jp',         # メインドメイン追加
     'www.reang.jp',     # www サブドメイン追加
-    # 'localhost',  # 開発用（必要に応じて削除）
-    # '127.0.0.1',  # 開発用（必要に応じて削除）
+    'localhost',        # 開発用
+    '127.0.0.1',        # 開発用
 ]
 
 
@@ -183,6 +183,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174",
     
     # 本番環境（メインドメイン）
     "https://reang.jp",
@@ -197,6 +199,7 @@ CORS_ALLOWED_ORIGINS = [
     # Netlify/Vercel等のデプロイ先（必要に応じて追加）
     "https://reang.netlify.app",
     "https://reang-jp.netlify.app",
+    "https://magnificent-cheesecake-939b88.netlify.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -231,6 +234,8 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174",
     
     # 本番環境
     "https://reang.jp",
@@ -243,6 +248,7 @@ CSRF_TRUSTED_ORIGINS = [
     # デプロイ先
     "https://reang.netlify.app",
     "https://reang-jp.netlify.app",
+    "https://magnificent-cheesecake-939b88.netlify.app",
 ]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # 本番環境用セキュリティ設定（一時的に緩和）
@@ -277,15 +283,30 @@ CONTACT_EMAIL = 'info@reang.jp'  # 問い合わせ通知先
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+    },
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
         },
     },
     'loggers': {
         'django': {
             'handlers': ['console'],
             'level': 'INFO',
+        },
+        'news': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'corsheaders': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
         },
     },
 }
