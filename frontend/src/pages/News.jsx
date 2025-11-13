@@ -49,10 +49,20 @@ function News() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* ヒーローセクション */}
-      <section className="bg-brand-primary text-white py-16">
-        <div className="max-w-5xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">News</h1>
-          <p className="text-lg text-gray-100">最新の情報をお届けします</p>
+      <section className="relative py-24 overflow-hidden text-[#14213d]">
+        {/* 背景画像 */}
+        <img
+          src="/images/bghero.png"
+          alt="背景画像"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+        
+        {/* オーバーレイ */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#48b6e8]/30 to-white/80 z-10"></div>
+        
+        <div className="relative z-20 max-w-5xl mx-auto px-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">News</h1>
+          <p className="text-lg text-gray-800">お知らせ・新たなサービス挑戦・技術についての情報をお届けします。</p>
         </div>
       </section>
 

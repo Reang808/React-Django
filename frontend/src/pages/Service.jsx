@@ -3,39 +3,68 @@ function Service() {
   const services = [
     {
       title: "Web開発",
-      desc: "ReactとDjangoを活用し、ビジネス課題に合わせたモダンなWebサイトやアプリを構築します。",
+      desc: "UI と API を分離したモダン構成で、スピード・安全性・拡張性に優れた Web プロダクトを構築します。LPや企業サイトから、EC・予約システムなどの実用アプリまで、あなたの事業を動かす「本物の土台」をゼロからつくります。",
       icon: "💻",
     },
     {
       title: "DX支援",
-      desc: "業務フローの自動化やクラウド導入など、企業のデジタル変革をサポートします。",
+      desc: "現在の業務フローを可視化し、デジタルツール導入・自動化・データ活用で「仕組みで回る会社」へ進化させます。作業の整理、ワークフロー再設計、各部署の連携改善まで、現場に合ったDXを実装します。",
       icon: "⚙️",
     },
     {
       title: "システム構築",
-      desc: "受発注管理・予約システム・顧客管理など、現場の課題に沿ったシステムを開発します。",
+      desc: "ノーコード/ローコードでコストを抑えながら、現場が「すぐに使える」業務ツールを開発します。在庫管理、勤怠、事務処理自動化、データ集計など、あなたの会社にフィットする業務ツールを短期間で導入可能です。",
       icon: "🧩",
     },
     {
       title: "コンサルティング",
-      desc: "技術選定・設計レビュー・運用アドバイスなど、エンジニア視点から課題を整理し提案します。",
+      desc: "ただアドバイスをするのではなく、実際に手を動かしながら 「会社で使える力」 を育てる伴走型支援です。ノーコード活用、AI導入、ツール運用、業務整理など、あなたのチームが自走できるまで徹底してサポートします。",
       icon: "💡",
     },
   ];
 
   const steps = [
-    "ヒアリング・提案",
-    "設計・デザイン",
-    "開発・実装",
-    "運用・サポート"
+    {
+      title: "ヒアリング・提案",
+      description: "お客様のご要望や課題を詳しくお聞きし、最適なソリューションを提案いたします",
+      duration: "1-2週間",
+      icon: "🔍"
+    },
+    {
+      title: "設計・デザイン",
+      description: "ワイヤーフレーム作成からUI/UXデザインまで、使いやすさを重視した設計を行います",
+      duration: "2-3週間",
+      icon: "🎨"
+    },
+    {
+      title: "開発・実装",
+      description: "モダンな技術スタックを使用し、安全性と拡張性を重視した開発を実施します",
+      duration: "3-6週間",
+      icon: "⚙️"
+    },
+    {
+      title: "運用・サポート",
+      description: "公開後の運用サポートや機能追加など、継続的なサービス向上をお手伝いします",
+      duration: "継続的",
+      icon: "🚀"
+    }
   ];
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 font-[Work_Sans,sans-serif]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-t from-[#48b6e8]  to-white text-[#14213d]  py-24">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">サービス一覧</h1>
+      <section className="relative py-24 overflow-hidden text-[#14213d]">
+        {/* 背景画像 */}
+        <img
+          src="/images/bghero.png"
+          alt="背景画像"
+          className="absolute inset-0 w-full h-full object-cover to-white/80 z-0"
+        />
+        
+        
+        
+        <div className="relative z-20 max-w-6xl mx-auto px-6 text-left">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight ">サービス一覧</h1>
           <p className="text-lg text-gray-900">
             ReangはWeb開発からDX支援まで、課題に合わせた柔軟なソリューションを提供します。
           </p>
@@ -72,17 +101,20 @@ function Service() {
           <h2 className="text-3xl font-bold text-black mb-12 border-l-4 border-[#14213d] pl-3">
             制作の流れ
           </h2>
-          <div className="flex flex-col md:flex-row md:justify-between gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, i) => (
-              <div key={i} className="flex flex-col items-start md:items-center text-left md:text-center flex-1">
-                <div className="w-14 h-14 flex items-center justify-center bg-[#14213d] text-white rounded-full text-xl font-bold mb-4 shadow">
-                  {i + 1}
+              <div key={i} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-16 h-16 flex items-center justify-center bg-[#14213d] text-white rounded-full text-xl font-bold mb-4 shadow-lg">
+                    {i + 1}
+                  </div>
+                  <div className="text-3xl mb-3">{step.icon}</div>
+                  <h3 className="font-bold text-[#14213d] mb-2 text-lg">{step.title}</h3>
+                  <p className="text-sm text-gray-600 mb-3 leading-relaxed">{step.description}</p>
+                  <span className="inline-block bg-[#48b6e8] text-white px-3 py-1 rounded-full text-xs font-medium">
+                    {step.duration}
+                  </span>
                 </div>
-                <p className="font-semibold text-[#14213d] mb-2">{step}</p>
-                {i !== steps.length - 1 && (
-                  <div className="hidden md:block w-2 h-10 bg-[#48b6e8] mx-auto rounded-full my-2"></div>
-                )}
-                <div className="block md:hidden w-full h-1 bg-[#48b6e8] rounded-full md:my-4"></div>
               </div>
             ))}
           </div>
@@ -90,18 +122,25 @@ function Service() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-24 bg-[#14213d] text-white text-left">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-6 border-l-4 border-[#48b6e8] pl-3">
-            お問い合わせ
-          </h2>
-          <p className="mb-10 leading-relaxed text-gray-100">
+      <section className="relative py-24 overflow-hidden text-gray-100">
+        {/* 背景画像 */}
+        <img
+          src="/images/bgcontac.png"
+          alt="背景画像"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+        
+        {/* オーバーレイ */}
+        <div className="absolute inset-0 z-10"></div>
+        
+        <div className="relative z-20 max-w-5xl mx-auto px-6 text-left">
+          <h2 className="text-3xl font-bold mb-6 border-l-4 border-[var(--color-brand-secondary)] pl-3">Contact</h2>
+          <p className="text-lg text-white mb-8 leading-relaxed">
             ご相談・お見積り・制作依頼など、どんなことでもお気軽にお問い合わせください。
           </p>
           <a
             href="/contact"
             className="inline-block bg-white text-[#14213d] px-8 py-3 rounded-md font-semibold hover:bg-[#48b6e8] hover:text-white transition"
-            style={{ fontFamily: "'Work Sans', sans-serif" }}
           >
             お問い合わせページへ
           </a>

@@ -27,8 +27,18 @@ function About() {
   return (
     <div className="min-h-screen bg-white text-neutral-900 font-sans">
       {/* Hero Section */}
-      <section className="bg-gradient-to-t from-[#48b6e8]  to-white text-[#14213d]  py-24">
-        <div className="max-w-6xl mx-auto px-6 text-center">
+      <section className="relative py-24 overflow-hidden text-[#14213d]">
+        {/* 背景画像 */}
+        <img
+          src="/images/bghero.png"
+          alt="背景画像"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+        
+        {/* オーバーレイ */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#48b6e8]/30 to-white/80 z-10"></div>
+        
+        <div className="relative z-20 max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-8">事業概要 - About</h1>
           <div className="grid md:grid-cols-3 gap-8 text-left md:text-center">
             <div>
@@ -54,8 +64,18 @@ function About() {
       </section>
 
       {/* About Section */}
-      <section className="py-24 bg-brand-gray">
-        <div className="max-w-5xl mx-auto px-6 text-left">
+      <section className="relative py-24 overflow-hidden">
+        {/* 背景画像 */}
+        <img
+          src="/images/bgservice.png"
+          alt="背景画像"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+        
+        {/* オーバーレイ */}
+        <div className="absolute inset-0 z-10"></div>
+        
+        <div className="relative z-20 max-w-5xl mx-auto px-6 text-left">
           <h2 className="text-3xl font-bold text-brand-black mb-8 border-l-4 border-brand-navy pl-3">
             About Me
           </h2>
@@ -116,18 +136,25 @@ function About() {
       
 
       {/* Contact Section */}
-      <section className="py-24 bg-brand-primary text-white text-left">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-6 border-l-4 border-[#48b6e8] pl-3">
-            Contact
-          </h2>
-          <p className="mb-10 leading-relaxed text-gray-100">
+      <section className="relative py-24 overflow-hidden text-gray-100">
+        {/* 背景画像 */}
+        <img
+          src="/images/bgcontac.png"
+          alt="背景画像"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+        
+        {/* オーバーレイ */}
+        <div className="absolute inset-0 z-10"></div>
+        
+        <div className="relative z-20 max-w-5xl mx-auto px-6 text-left">
+          <h2 className="text-3xl font-bold mb-6 border-l-4 border-[var(--color-brand-secondary)] pl-3">Contact</h2>
+          <p className="text-lg text-white mb-8 leading-relaxed">
             ご相談・お見積り・制作依頼など、どんなことでもお気軽にお問い合わせください。
           </p>
           <a
             href="/contact"
             className="inline-block bg-white text-[#14213d] px-8 py-3 rounded-md font-semibold hover:bg-[#48b6e8] hover:text-white transition"
-            style={{ fontFamily: "'Work Sans', sans-serif" }}
           >
             お問い合わせページへ
           </a>

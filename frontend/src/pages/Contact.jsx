@@ -65,8 +65,18 @@ function Contact() {
   return (
     <div className="min-h-screen bg-gray-100 text-neutral-900 font-sans">
       {/* Hero Section */}
-      <section className="bg-linear-to-br from-[#48b6e8] via-white to-[#48b6e8] text-white py-24">
-        <div className="max-w-6xl mx-auto px-6 text-center">
+      <section className="relative py-24 overflow-hidden text-gray-100">
+        {/* 背景画像 */}
+        <img
+          src="/images/bgcontac.png"
+          alt="背景画像"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+        
+        {/* オーバーレイ */}
+        <div className="absolute inset-0 z-10"></div>
+        
+        <div className="relative z-20 max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-4xl text-gray-800 md:text-5xl font-bold mb-6">お問い合わせ</h1>
           <p className="text-lg text-gray-800">
             ご要望・ご相談・お見積りなど、お気軽にお問い合わせください。
