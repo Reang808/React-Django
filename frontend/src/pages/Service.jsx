@@ -1,5 +1,12 @@
 
+import { useState, useEffect } from "react";
+
 function Service() {
+  const [isHeroVisible, setIsHeroVisible] = useState(false);
+  const [isServicesVisible, setIsServicesVisible] = useState(false);
+  const [isProcessVisible, setIsProcessVisible] = useState(false);
+  const [isContactVisible, setIsContactVisible] = useState(false);
+
   const services = [
     {
       title: "Web開発",
@@ -50,6 +57,71 @@ function Service() {
     }
   ];
 
+  // ヒーローセクションのアニメーション
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsHeroVisible(true);
+    }, 300); // 0.3秒後にアニメーション開始
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // 各セクションのスクロールアニメーション
+  useEffect(() => {
+    const observers = [];
+
+    // サービスセクション
+    const servicesObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsServicesVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '-50px 0px' }
+    );
+
+    // プロセスセクション
+    const processObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsProcessVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '-50px 0px' }
+    );
+
+    // コンタクトセクション
+    const contactObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsContactVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '-50px 0px' }
+    );
+
+    // 要素の監視開始
+    const servicesSection = document.getElementById('services-section');
+    const processSection = document.getElementById('process-section');
+    const contactSection = document.getElementById('contact-section');
+
+    if (servicesSection) servicesObserver.observe(servicesSection);
+    if (processSection) processObserver.observe(processSection);
+    if (contactSection) contactObserver.observe(contactSection);
+
+    observers.push(servicesObserver, processObserver, contactObserver);
+
+    return () => {
+      observers.forEach(observer => observer.disconnect());
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-neutral-900 font-[Work_Sans,sans-serif]">
       {/* Hero Section */}
@@ -64,25 +136,54 @@ function Service() {
         
         
         <div className="relative z-20 max-w-6xl mx-auto px-6 text-left">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight ">サービス一覧</h1>
-          <p className="text-lg text-gray-900">
+          <h1 className={`text-4xl md:text-5xl font-bold mb-6 tracking-tight transition-all duration-1000 ease-out ${
+            isHeroVisible 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 -translate-x-8'
+          }`}>サービス一覧</h1>
+          <p className={`text-lg text-gray-900 transition-all duration-1000 ease-out delay-300 ${
+            isHeroVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}>
             ReangはWeb開発からDX支援まで、課題に合わせた柔軟なソリューションを提供します。
           </p>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-[#f7f7fa]">
+      <section id="services-section" className="py-24 bg-[#f7f7fa]">
         <div className="max-w-6xl mx-auto px-6 text-left">
-          <h2 className="text-3xl font-bold text-black mb-12 border-l-4 border-[#14213d] pl-3">
-            提供サービス
+          <h2 className="text-4xl font-bold text-black mb-8 border-l-4 border-[#14213d] pl-3 relative overflow-hidden">
+            <span className={`inline-block transition-all duration-800 ease-out ${
+              isServicesVisible 
+                ? 'opacity-100 translate-x-0' 
+                : 'opacity-0 -translate-x-8'
+            }`}>
+              提供サービス
+            </span>
           </h2>
+          <p className={`text-xl text-left text-gray-700 mb-12 max-w-4xl leading-relaxed transition-all duration-800 ease-out delay-300 ${
+            isServicesVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}>
+            お客様のニーズに合わせて、最適なソリューションをご提供いたします。<br />
+            単発のプロジェクトから継続的なサポートまで、幅広く対応可能です。
+          </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow p-8 hover:shadow-xl transition transform hover:-translate-y-1 hover:border-[#48b6e8] border border-transparent duration-200"
-                style={{ fontFamily: "'Work Sans', sans-serif" }}
+                className={`bg-white rounded-xl shadow p-8 hover:shadow-xl transition-all transform hover:-translate-y-1 hover:border-[#48b6e8] border border-transparent duration-800 ease-out ${
+                  isServicesVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
+                style={{ 
+                  fontFamily: "'Work Sans', sans-serif",
+                  transitionDelay: `${500 + index * 100}ms`
+                }}
               >
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-xl font-semibold text-[#14213d] mb-3">
@@ -96,14 +197,36 @@ function Service() {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 bg-white">
+      <section id="process-section" className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6 text-left">
-          <h2 className="text-3xl font-bold text-black mb-12 border-l-4 border-[#14213d] pl-3">
-            制作の流れ
+          <h2 className="text-4xl font-bold text-black mb-8 border-l-4 border-[#14213d] pl-3 relative overflow-hidden">
+            <span className={`inline-block transition-all duration-800 ease-out ${
+              isProcessVisible 
+                ? 'opacity-100 translate-x-0' 
+                : 'opacity-0 -translate-x-8'
+            }`}>
+              制作の流れ
+            </span>
           </h2>
+          <p className={`text-xl text-left text-gray-700 mb-12 max-w-4xl leading-relaxed transition-all duration-800 ease-out delay-300 ${
+            isProcessVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}>
+            お客様との密なコミュニケーションを重視し、品質の高いプロダクトをお届けします。<br />
+            各フェーズで進捗をご報告し、安心してお任せいただけるよう努めています。
+          </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, i) => (
-              <div key={i} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+              <div 
+                key={i} 
+                className={`bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-800 ease-out border border-gray-100 ${
+                  isProcessVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: `${500 + i * 100}ms` }}
+              >
                 <div className="flex flex-col items-center text-center">
                   <div className="w-16 h-16 flex items-center justify-center bg-[#14213d] text-white rounded-full text-xl font-bold mb-4 shadow-lg">
                     {i + 1}
@@ -122,7 +245,7 @@ function Service() {
       </section>
 
       {/* Contact Section */}
-      <section className="relative py-24 overflow-hidden text-gray-100">
+      <section id="contact-section" className="relative py-24 overflow-hidden text-gray-100">
         {/* 背景画像 */}
         <img
           src="/images/bgcontac.png"
@@ -134,13 +257,30 @@ function Service() {
         <div className="absolute inset-0 z-10"></div>
         
         <div className="relative z-20 max-w-5xl mx-auto px-6 text-left">
-          <h2 className="text-3xl font-bold mb-6 border-l-4 border-[var(--color-brand-secondary)] pl-3">Contact</h2>
-          <p className="text-lg text-white mb-8 leading-relaxed">
-            ご相談・お見積り・制作依頼など、どんなことでもお気軽にお問い合わせください。
+          <h2 className="text-4xl font-bold mb-8 border-l-4 border-[#48b6e8] pl-3 relative overflow-hidden">
+            <span className={`inline-block transition-all duration-800 ease-out ${
+              isContactVisible 
+                ? 'opacity-100 translate-x-0' 
+                : 'opacity-0 -translate-x-8'
+            }`}>
+              Contact
+            </span>
+          </h2>
+          <p className={`text-xl text-white mb-8 leading-relaxed transition-all duration-800 ease-out delay-300 ${
+            isContactVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}>
+            ご相談・お見積り・制作依頼など、どんなことでもお気軽にお問い合わせください。<br />
+            まずは無料でご相談いただけますので、お気軽にお声がけください。
           </p>
           <a
             href="/contact"
-            className="inline-block bg-white text-[#14213d] px-8 py-3 rounded-md font-semibold hover:bg-[#48b6e8] hover:text-white transition"
+            className={`inline-block bg-white text-[#14213d] px-8 py-3 rounded-md font-semibold hover:bg-[#48b6e8] hover:text-white transition-all duration-800 ease-out delay-500 shadow-lg ${
+              isContactVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
           >
             お問い合わせページへ
           </a>

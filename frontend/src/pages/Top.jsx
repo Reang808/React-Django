@@ -6,6 +6,11 @@ function Top() {
   const [latestNews, setLatestNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isHeroVisible, setIsHeroVisible] = useState(false);
+  const [isAboutVisible, setIsAboutVisible] = useState(false);
+  const [isServiceVisible, setIsServiceVisible] = useState(false);
+  const [isNewsVisible, setIsNewsVisible] = useState(false);
+  const [isContactVisible, setIsContactVisible] = useState(false);
 
   const services = {
     web: {
@@ -25,6 +30,127 @@ function Top() {
   };
 
   const activeService = services[active];
+
+  // ヒーローセクションのアニメーション
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsHeroVisible(true);
+    }, 300); // 0.3秒後にアニメーション開始
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Aboutセクションのスクロールアニメーション
+  useEffect(() => {
+    const aboutObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsAboutVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // 10%見えたらトリガー
+        rootMargin: '-50px 0px' // 少し遅めにトリガー
+      }
+    );
+
+    const aboutSection = document.getElementById('about-section');
+    if (aboutSection) {
+      aboutObserver.observe(aboutSection);
+    }
+
+    return () => {
+      if (aboutSection) {
+        aboutObserver.unobserve(aboutSection);
+      }
+    };
+  }, []);
+
+  // Serviceセクションのスクロールアニメーション
+  useEffect(() => {
+    const serviceObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsServiceVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // 10%見えたらトリガー
+        rootMargin: '-50px 0px' // 少し遅めにトリガー
+      }
+    );
+
+    const serviceSection = document.getElementById('service-section');
+    if (serviceSection) {
+      serviceObserver.observe(serviceSection);
+    }
+
+    return () => {
+      if (serviceSection) {
+        serviceObserver.unobserve(serviceSection);
+      }
+    };
+  }, []);
+
+  // Newsセクションのスクロールアニメーション
+  useEffect(() => {
+    const newsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsNewsVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // 10%見えたらトリガー
+        rootMargin: '-50px 0px' // 少し遅めにトリガー
+      }
+    );
+
+    const newsSection = document.getElementById('news-section');
+    if (newsSection) {
+      newsObserver.observe(newsSection);
+    }
+
+    return () => {
+      if (newsSection) {
+        newsObserver.unobserve(newsSection);
+      }
+    };
+  }, []);
+
+  // Contactセクションのスクロールアニメーション
+  useEffect(() => {
+    const contactObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsContactVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // 10%見えたらトリガー
+        rootMargin: '-50px 0px' // 少し遅めにトリガー
+      }
+    );
+
+    const contactSection = document.getElementById('contact-section');
+    if (contactSection) {
+      contactObserver.observe(contactSection);
+    }
+
+    return () => {
+      if (contactSection) {
+        contactObserver.unobserve(contactSection);
+      }
+    };
+  }, []);
 
   // 最新記事を取得
   useEffect(() => {
@@ -62,15 +188,27 @@ function Top() {
        
         {/* コンテンツ */}
         <div className="relative z-20 max-w-6xl mx-auto text-center px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight drop-shadow-lg">
-            ビジネスを加速させる<br />技術パートナー
+          <h1 className={`text-4xl md:text-5xl font-bold mb-6 leading-tight drop-shadow-lg transition-all duration-1000 ease-out ${
+            isHeroVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}>
+            Webアプリケーション開発
           </h1>
-          <p className="text-lg md:text-xl mb-10 text-gray-100 drop-shadow-md">
-            Web開発からDX支援まで、あなたのビジネスをお手伝いします。
+          <p className={`text-lg md:text-xl mb-10 text-gray-100 drop-shadow-md transition-all duration-1000 ease-out delay-300 ${
+            isHeroVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}>
+            最新技術を駆使したフルスタック開発で、企業サイト・業務システム・ECサイトまで幅広く対応いたします。
           </p>
           <a
             href="/contact"
-            className="inline-block bg-white text-[#14213d] px-8 py-3 rounded-md font-semibold hover:bg-[#48b6e8] hover:text-white transition"
+            className={`inline-block bg-white text-[#14213d] px-8 py-3 rounded-md font-semibold hover:bg-[#48b6e8] hover:text-white transition-all duration-1000 ease-out delay-500 ${
+              isHeroVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
           >
             お問い合わせへ
           </a>
@@ -91,22 +229,36 @@ function Top() {
         <div className="relative z-20 max-w-6xl mx-auto px-6">
           
           {/* About Section */}
-          <div className="mb-24">
-            <h2 className="text-4xl text-brand-primary font-bold mb-12 text-left border-l-4 border-[#14213d] pl-3">
-              About
+          <div id="about-section" className="mb-24">
+            <h2 className="text-4xl text-brand-primary font-bold mb-12 text-left border-l-4 border-[#14213d] pl-3 relative overflow-hidden">
+              <span className={`inline-block transition-all duration-800 ease-out ${
+                isAboutVisible 
+                  ? 'opacity-100 translate-x-0' 
+                  : 'opacity-0 -translate-x-8'
+              }`}>
+                About
+              </span>
             </h2>
             
             <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
               {/* テキスト部分 */}
               <div className="flex-1">
-                <p className="text-xl text-neutral-700 mb-8 leading-relaxed text-left">
-                  Reang（リアング）はReact＋Djangoという技術を使ったモダンなシステム開発を軸に、
-                  中小企業や個人事業主のDXを支援しています。
+                <p className={`text-xl text-neutral-700 mb-8 leading-relaxed text-left transition-all duration-800 ease-out delay-300 ${
+                  isAboutVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}>
+                  Reang（リアング）は、React × Django を専門とするWebアプリケーション開発会社です。<br />
+                  企業サイト・業務システム・ECサイトなど、お客様のニーズに合わせた高品質なWebアプリケーションを開発いたします。
                 </p>
                 <div className="text-left">
                 <a
                   href="/about"
-                  className="inline-block text-[#14213d] bg-white px-8 py-3 rounded-md font-semibold hover:bg-[#14213d] hover:text-white transition shadow-lg"
+                  className={`inline-block text-[#14213d] bg-white px-8 py-3 rounded-md font-semibold hover:bg-[#14213d] hover:text-white transition-all duration-800 ease-out delay-500 shadow-lg ${
+                    isAboutVisible 
+                      ? 'opacity-100 translate-y-0' 
+                      : 'opacity-0 translate-y-8'
+                  }`}
                 >
                   事業概要を見る
                 </a>
@@ -118,23 +270,41 @@ function Top() {
                 <img
                   src="/images/IMG_1338.jpg"
                   alt="コーディング中の烈志"
-                  className="w-full h-auto rounded-lg shadow-xl object-cover hover:shadow-2xl transition-shadow duration-300"
+                  className={`w-full h-auto rounded-lg shadow-xl object-cover hover:shadow-2xl transition-all duration-800 ease-out delay-700 ${
+                    isAboutVisible 
+                      ? 'opacity-100 translate-y-0' 
+                      : 'opacity-0 translate-y-8'
+                  }`}
                 />
               </div>
             </div>
           </div>
 
           {/* Service Section */}
-          <div>
-            <h2 className="text-4xl text-brand-primary font-bold mb-12 text-left border-l-4 border-[#14213d] pl-3">
-              Service
+          <div id="service-section">
+            <h2 className="text-4xl text-brand-primary font-bold mb-12 text-left border-l-4 border-[#14213d] pl-3 relative overflow-hidden">
+              <span className={`inline-block transition-all duration-800 ease-out ${
+                isServiceVisible 
+                  ? 'opacity-100 translate-x-0' 
+                  : 'opacity-0 -translate-x-8'
+              }`}>
+                Service
+              </span>
             </h2>
-            <p className="text-xl text-left text-gray-700 mb-12 max-w-4xl leading-relaxed">
+            <p className={`text-xl text-left text-gray-700 mb-12 max-w-4xl leading-relaxed transition-all duration-800 ease-out delay-300 ${
+              isServiceVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}>
               モダンなWeb技術を活用して、ノーコード、ローコード開発からプログラミングまで幅広く対応します。<br />
               小規模な個人サイトから大規模な企業システムまで、幅広いニーズにお応えします。
             </p>
             
-            <div className="flex justify-center space-x-4 mb-12">
+            <div className={`flex justify-center space-x-4 mb-12 transition-all duration-800 ease-out delay-500 ${
+              isServiceVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}>
               <button
                 onClick={() => setActive('web')}
                 className={`px-8 py-3 rounded-md font-medium transition shadow-lg ${
@@ -145,6 +315,7 @@ function Top() {
               >
                 Web開発
               </button>
+            
               <button
                 onClick={() => setActive('dx')}
                 className={`px-8 py-3 rounded-md font-medium transition shadow-lg ${
@@ -157,7 +328,11 @@ function Top() {
               </button>
             </div>
 
-            <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-3xl">
+            <div className={`max-w-5xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-800 ease-out delay-700 hover:shadow-3xl ${
+              isServiceVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}>
               <div className="flex flex-col md:flex-row">
                 {/* テキスト部分 */}
                 <div className="md:w-1/2 p-10 flex flex-col justify-center order-2 md:order-1">
@@ -194,29 +369,53 @@ function Top() {
       </section>
       
       {/* News Section */}
-      <section className="relative py-24 overflow-hidden">
+      <section id="news-section" className="relative py-24 overflow-hidden">
         
         
         {/* オーバーレイ */}
         <div className="absolute inset-0 bg-white/80 z-10"></div>
         
         <div className="relative z-20 max-w-5xl mx-auto px-6">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold text-brand-black border-l-4 border-brand-navy pl-3">
-              News
+          <div className="mb-12">
+            <h2 className="text-4xl text-brand-black font-bold mb-6 text-left border-l-4 border-brand-navy pl-3 relative overflow-hidden">
+              <span className={`inline-block transition-all duration-800 ease-out ${
+                isNewsVisible 
+                  ? 'opacity-100 translate-x-0' 
+                  : 'opacity-0 -translate-x-8'
+              }`}>
+                News
+              </span>
             </h2>
-            <a
-              href="/news"
-              className="text-brand-navy hover:text-[#48b6e8] font-medium transition-colors duration-200 flex items-center"
-            >
-              すべて見る
-              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
+            <p className={`text-xl text-left text-gray-700 mb-8 max-w-4xl leading-relaxed transition-all duration-800 ease-out delay-300 ${
+              isNewsVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}>
+              最新の開発事例やお客様の声、技術情報など、Reangの取り組みをお伝えします。<br />
+              プロジェクトの進捗や業界のトレンドもこちらでご確認いただけます。
+            </p>
+            <div className={`flex justify-end transition-all duration-800 ease-out delay-500 ${
+              isNewsVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}>
+              <a
+                href="/news"
+                className="text-brand-navy hover:text-[#48b6e8] font-medium transition-colors duration-200 flex items-center"
+              >
+                すべて見る
+                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
           </div>
           
-          <div className="space-y-6">
+          <div className={`space-y-6 transition-all duration-800 ease-out delay-700 ${
+            isNewsVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}>
             {loading ? (
               // ローディング表示
               <div className="text-center py-8">
@@ -274,7 +473,7 @@ function Top() {
       </section>
 
       {/* Contact Section */}
-      <section className="relative py-24 overflow-hidden text-gray-100">
+      <section id="contact-section" className="relative py-24 overflow-hidden text-gray-100">
         {/* 背景画像 */}
         <img
           src="/images/bgcontac.png"
@@ -286,13 +485,30 @@ function Top() {
         <div className="absolute inset-0 z-10"></div>
         
         <div className="relative z-20 max-w-5xl mx-auto px-6 text-left">
-          <h2 className="text-3xl font-bold mb-6 border-l-4 border-[var(--color-brand-secondary)] pl-3">Contact</h2>
-          <p className="text-lg text-white mb-8 leading-relaxed">
-            ご相談・お見積り・制作依頼など、どんなことでもお気軽にお問い合わせください。
+          <h2 className="text-4xl font-bold mb-8 border-l-4 border-[#48b6e8] pl-3 relative overflow-hidden">
+            <span className={`inline-block transition-all duration-800 ease-out ${
+              isContactVisible 
+                ? 'opacity-100 translate-x-0' 
+                : 'opacity-0 -translate-x-8'
+            }`}>
+              Contact
+            </span>
+          </h2>
+          <p className={`text-xl text-white mb-8 leading-relaxed transition-all duration-800 ease-out delay-300 ${
+            isContactVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}>
+            ご相談・お見積り・制作依頼など、どんなことでもお気軽にお問い合わせください。<br />
+            まずは無料でご相談いただけますので、お気軽にお声がけください。
           </p>
           <a
             href="/contact"
-            className="inline-block bg-white text-[#14213d] px-8 py-3 rounded-md font-semibold hover:bg-[#48b6e8] hover:text-white transition"
+            className={`inline-block bg-white text-[#14213d] px-8 py-3 rounded-md font-semibold hover:bg-[#48b6e8] hover:text-white transition-all duration-800 ease-out delay-500 shadow-lg ${
+              isContactVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
           >
             お問い合わせページへ
           </a>
