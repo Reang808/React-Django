@@ -15,14 +15,14 @@ function Top() {
   const services = {
     web: {
       title: 'Web開発',
-      desc: 'React×Djangoのフルスタックで、UI設計からバックエンド・API・運用基盤まで一気通貫で構築。高速・拡張性・保守性を両立したWebサイト/EC/業務アプリを、事業成長に寄り添うプロダクトとして開発します。',
+      desc: 'Web開発では、React×Djangoのモダンなフルスタック技術を用い、事業成長を支える以下のようなプロダクトを開発します。<br><br>• 企業Webサイト・LP制作<br>• ECサイト・予約システム（実用アプリ）<br> • カスタム業務アプリケーション <br>• 高性能なWebサービス・プラットフォーム<br>• 外部サービス連携API開発',
       link: '/service',
       image: '/images/coding-photo.jpg',
       alt: 'Web開発のイメージ'
     },
     dx: {
       title: 'DX支援',
-      desc: '業務自動化・データ可視化・管理ツール構築を、ノーコード・ローコード・フルスクラッチから最適選択。企業の運用に馴染む形で設計し、コスト最小・成果最大の業務改善を実現します。',
+      desc: '以下のステップで伴走支援を行います。<br>[1] 現在の作業プロセスやボトルネックを分析し、改善の優先順位を決定します。<br>[2] 現場に合った効率的なワークフローへと再構築します。<br>[3] デジタルツール導入・自動化支援<br> [4] 蓄積されたデータを経営や業務に活かすための基盤づくりと分析をサポートします。<br>[5] 組織内の連携改善、全社的な効率化を図ります。',
       link: '/service',
       image: '/images/profile.png',
       alt: 'DX支援のイメージ'
@@ -181,7 +181,7 @@ function Top() {
       <section className="relative overflow-hidden text-white py-24  flex items-center">
         {/* 背景画像 */}
         <img
-          src="/images/bgtop2.png"
+          src="/images/HERo.png"
           alt="背景画像"
           className="absolute inset-0 w-full h-full object-cover z-0 "
         />
@@ -339,9 +339,10 @@ function Top() {
                   <h3 className="text-3xl font-semibold text-gray-900 text-left mb-6">
                     {activeService.title}
                   </h3>
-                  <p className="text-neutral-700 mb-8 leading-relaxed text-left text-lg">
-                    {activeService.desc}
-                  </p>
+                  <div 
+                    className="text-neutral-700 mb-8 leading-relaxed text-left text-lg"
+                    dangerouslySetInnerHTML={{ __html: activeService.desc }}
+                  />
                   <a
                     href={activeService.link}
                     className="inline-flex items-center text-black hover:text-[#48b6e8] font-semibold transition-colors duration-200 text-lg"
