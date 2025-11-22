@@ -87,12 +87,12 @@ function Contact() {
         <div className="absolute inset-0 z-10"></div>
         
         <div className="relative z-20 max-w-6xl mx-auto px-6 text-center">
-          <h1 className={`text-4xl text-gray-800 md:text-5xl font-bold mb-6 transition-all duration-1000 ease-out ${
+          <h1 className={`text-4xl text-brand-primary md:text-5xl font-bold mb-6 transition-all duration-1000 ease-out ${
             isHeroVisible 
               ? 'opacity-100 translate-x-0' 
               : 'opacity-0 -translate-x-8'
           }`}>お問い合わせ</h1>
-          <p className={`text-lg text-gray-800 transition-all duration-1000 ease-out delay-300 ${
+          <p className={`text-lg text-brand-primary transition-all duration-1000 ease-out delay-300 ${
             isHeroVisible 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'

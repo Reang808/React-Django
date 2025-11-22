@@ -15,14 +15,14 @@ function Top() {
   const services = {
     web: {
       title: 'Web開発',
-      desc: 'Web開発では、React×Djangoのモダンなフルスタック技術を用い、事業成長を支える以下のようなプロダクトを開発します。<br><br>• 企業Webサイト・LP制作<br>• ECサイト・予約システム（実用アプリ）<br> • カスタム業務アプリケーション <br>• 高性能なWebサービス・プラットフォーム<br>• 外部サービス連携API開発',
+      desc: 'Web開発では、React×Djangoのモダンなフルスタック技術を用い、事業成長を支える以下のようなプロダクトを開発します。',
       link: '/service',
       image: '/images/coding-photo.jpg',
       alt: 'Web開発のイメージ'
     },
     dx: {
       title: 'DX支援',
-      desc: '以下のステップで伴走支援を行います。<br>[1] 現在の作業プロセスやボトルネックを分析し、改善の優先順位を決定します。<br>[2] 現場に合った効率的なワークフローへと再構築します。<br>[3] デジタルツール導入・自動化支援<br> [4] 蓄積されたデータを経営や業務に活かすための基盤づくりと分析をサポートします。<br>[5] 組織内の連携改善、全社的な効率化を図ります。',
+      desc: 'DX支援では、最新のWeb技術と自動化ツールを活用し、企業のデジタルトランスフォーメーションを推進します。',
       link: '/service',
       image: '/images/profile.png',
       alt: 'DX支援のイメージ'
@@ -193,7 +193,7 @@ function Top() {
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
           }`}>
-            Webアプリケーション開発
+            システム開発
           </h1>
           <p className={`text-lg md:text-xl mb-10 text-gray-100 drop-shadow-md transition-all duration-1000 ease-out delay-300 ${
             isHeroVisible 
@@ -392,8 +392,8 @@ function Top() {
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
             }`}>
-              最新の開発事例やお客様の声、技術情報など、Reangの取り組みをお伝えします。<br />
-              プロジェクトの進捗や業界のトレンドもこちらでご確認いただけます。
+              最新の開発事例やお知らせ、技術情報など、Reangの取り組みをお届けします。<br />
+              
             </p>
             <div className={`flex justify-end transition-all duration-800 ease-out delay-500 ${
               isNewsVisible 
