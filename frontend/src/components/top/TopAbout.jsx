@@ -149,11 +149,7 @@ const TopAbout = () => {
                 </p>
               </div>
             )}
-
-          </div>
-        </div>
-        {/* About ページへのリンク */}
-        <div className="mt-10 flex justify-center">
+             <div className="mt-10 flex justify-center">
           <a
             href="/about"
             className="mt-10 inline-block bg-[#14213d] text-white px-6 py-3 rounded-md shadow hover:bg-[#48b6e8] transition-all"
@@ -161,6 +157,11 @@ const TopAbout = () => {
             詳しく見る
           </a>
         </div>
+
+          </div>
+        </div>
+        {/* About ページへのリンク */}
+       
       </div>
     </div>
   );
