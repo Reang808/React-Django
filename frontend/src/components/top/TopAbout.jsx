@@ -31,63 +31,68 @@ const TopAbout = () => {
       ref={aboutRef}
       className={`w-full flex flex-col items-center transition-all duration-700 ease-out ${showAnim ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
     >
-      {/* セクションタイトル */}
-      <h2 className="text-3xl font-bold mb-8 text-center">
-        「Reang（リアング）について」
-      </h2>
-
-      <div className="w-full max-w-6xl bg-white shadow-lg rounded-2xl p-8 flex flex-col md:flex-row gap-10">
-
-        {/* 左：プロフィール写真 */}
-        <div className="flex justify-center md:block w-full md:w-1/3">
-          <img
-            src="/images/binmy.JPG"
-            alt="Profile"
-            className="w-40 h-40 rounded-full object-cover shadow-md"
-          />
-        </div>
-
-        {/* 右：タブ + 内容 */}
-        <div className="w-full md:w-2/3 flex flex-col">
-
-          {/* タブ */}
-          <div className="flex gap-4 border-b pb-2 mb-6">
-            <button
-              onClick={() => setActive("overview")}
-              className={`pb-2 transition-all ${
-                active === "overview"
-                  ? "border-b-2 border-black font-semibold"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              事業概要
-            </button>
-
-            <button
-              onClick={() => setActive("message")}
-              className={`pb-2 transition-all ${
-                active === "message"
-                  ? "border-b-2 border-black font-semibold"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              メッセージ
-            </button>
-
-            <button
-              onClick={() => setActive("career")}
-              className={`pb-2 transition-all ${
-                active === "career"
-                  ? "border-b-2 border-black font-semibold"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              経歴
-            </button>
+      <div className="w-full max-w-6xl bg-white shadow-lg rounded-2xl p-6 md:p-8">
+        
+        {/* ヘッダー部分：画像 + タイトル */}
+        <div className="flex flex-col md:flex-row items-center gap-6 pb-6 mb-6 border-b-2 border-gray-100">
+          {/* プロフィール写真 */}
+          <div className="flex-shrink-0">
+            <img
+              src="/images/binmy.JPG"
+              alt="Profile"
+              className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg ring-4 ring-gray-100"
+            />
           </div>
 
-          {/* 切り替えコンテンツ */}
-          <div className="text-gray-700 leading-relaxed">
+          {/* タイトルと説明 */}
+          <div className="flex-1 text-center md:text-left">
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-[#14213d]">
+              Reang（リアング）について
+            </h2>
+            <p className="text-gray-600 text-sm md:text-base">
+              React × Django を軸としたフルスタック開発で、お客様の挑戦を支えます
+            </p>
+          </div>
+        </div>
+
+        {/* タブナビゲーション */}
+        <div className="flex gap-3 md:gap-6 border-b pb-2 mb-6 overflow-x-auto">
+          <button
+            onClick={() => setActive("overview")}
+            className={`pb-2 px-2 transition-all whitespace-nowrap text-sm md:text-base ${
+              active === "overview"
+                ? "border-b-2 border-[#14213d] font-semibold text-[#14213d]"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            事業概要
+          </button>
+
+          <button
+            onClick={() => setActive("message")}
+            className={`pb-2 px-2 transition-all whitespace-nowrap text-sm md:text-base ${
+              active === "message"
+                ? "border-b-2 border-[#14213d] font-semibold text-[#14213d]"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            メッセージ
+          </button>
+
+          <button
+            onClick={() => setActive("career")}
+            className={`pb-2 px-2 transition-all whitespace-nowrap text-sm md:text-base ${
+              active === "career"
+                ? "border-b-2 border-[#14213d] font-semibold text-[#14213d]"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            経歴
+          </button>
+        </div>
+
+        {/* コンテンツエリア */}
+        <div className="text-gray-700 leading-relaxed text-sm md:text-base">
 
             {/* 事業概要 */}
             {active === "overview" && (
@@ -117,7 +122,7 @@ const TopAbout = () => {
                   もし新しいビジネスの種や実現したい構想があれば、ぜひ気軽に相談してください。<br></br><br></br>
                   また、業務が煩雑で管理が追いつかない、どのツールを使えばよいか分からない、
                   システム化に踏み出せないといった課題は、私が責任を持って解決します。<br></br>
-                  Reangは、挑戦を前に進める“伴走型パートナー”として価値を提供し続けます。
+                  Reangは、挑戦を前に進める「伴走型パートナー」として価値を提供し続けます。
                 </p>
               </div>
             )}
@@ -145,23 +150,21 @@ const TopAbout = () => {
                 <p className="mt-4 leading-relaxed">
                   現在は React × Django を中心に、受託開発・業務効率化・DX支援、
                   ノーコード導入支援、個人の0→1立ち上げなど、
-                  “課題にフィットした仕組みを作る” フルスタックエンジニアとして活動しています。
+                  「課題にフィットした仕組みを作る」フルスタックエンジニアとして活動しています。
                 </p>
               </div>
             )}
-             <div className="mt-10 flex justify-center">
+        </div>
+
+        {/* About ページへのリンク */}
+        <div className="mt-8 flex justify-center">
           <a
             href="/about"
-            className="mt-10 inline-block bg-[#14213d] text-white px-6 py-3 rounded-md shadow hover:bg-[#48b6e8] transition-all"
+            className="inline-block bg-[#14213d] text-white px-6 py-3 rounded-md shadow hover:bg-[#48b6e8] transition-all"
           >
             詳しく見る
           </a>
         </div>
-
-          </div>
-        </div>
-        {/* About ページへのリンク */}
-       
       </div>
     </div>
   );

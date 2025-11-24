@@ -7,11 +7,11 @@ import TopNews from "../components/top/TopNews";
 import TopContact from "../components/top/TopContact";
 
 const Home = () => {
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useState("service");
 
   const sections = {
-    about: <TopAbout />,
     service: <TopService />,
+    about: <TopAbout />,
     news: <TopNews />,
     contact: <TopContact />,
   };
@@ -41,40 +41,40 @@ const Home = () => {
         {/* ------------------------- */}
         {/* 3. Tabs + ActiveSection */}
         {/* ------------------------- */}
-        <div className="w-full max-w-6xl mx-auto px-4 py-20 relative z-20">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16 lg:py-20 relative z-20">
 
-          {/* タブ（Pill UI） */}
-          <div className="w-full flex justify-center mb-8">
-            <div className="flex bg-gray-100 rounded-full p-2 shadow-inner gap-2">
-
-              <button
-                onClick={() => setActiveSection("about")}
-                className={`px-6 py-2 text-sm md:text-base rounded-full transition-all duration-300 ${
-                  activeSection === "about"
-                    ? "bg-[#14213d] text-white shadow"
-                    : "text-gray-600 hover:text-[#14213d]"
-                }`}
-              >
-                About
-              </button>
+          {/* タブ（レスポンシブ Pill UI） */}
+          <div className="w-full flex justify-center mb-8 md:mb-12">
+            <div className="inline-flex bg-gray-100 rounded-full p-1.5 sm:p-2 shadow-inner gap-1.5 sm:gap-2 flex-wrap justify-center max-w-full">
 
               <button
                 onClick={() => setActiveSection("service")}
-                className={`px-6 py-2 text-sm md:text-base rounded-full transition-all duration-300 ${
+                className={`px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 text-xs sm:text-sm md:text-base font-medium rounded-full transition-all duration-300 whitespace-nowrap ${
                   activeSection === "service"
-                    ? "bg-[#14213d] text-white shadow"
-                    : "text-gray-600 hover:text-[#14213d]"
+                    ? "bg-[#14213d] text-white shadow-lg scale-105"
+                    : "text-gray-600 hover:text-[#14213d] hover:bg-white/50"
                 }`}
               >
                 Service
               </button>
 
               <button
+                onClick={() => setActiveSection("about")}
+                className={`px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 text-xs sm:text-sm md:text-base font-medium rounded-full transition-all duration-300 whitespace-nowrap ${
+                  activeSection === "about"
+                    ? "bg-[#14213d] text-white shadow-lg scale-105"
+                    : "text-gray-600 hover:text-[#14213d] hover:bg-white/50"
+                }`}
+              >
+                About
+              </button>
+
+              <button
                 onClick={() => setActiveSection("news")}
-                className={`px-6 py-2 text-sm md:text-base rounded-full transition-all duration-300 ${
+                className={`px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 text-xs sm:text-sm md:text-base font-medium rounded-full transition-all duration-300 whitespace-nowrap ${
                   activeSection === "news"
-                    ? "bg-[#14213d] text-white shadow"
-                    : "text-gray-600 hover:text-[#14213d]"
+                    ? "bg-[#14213d] text-white shadow-lg scale-105"
+                    : "text-gray-600 hover:text-[#14213d] hover:bg-white/50"
                 }`}
               >
                 News
@@ -82,10 +82,10 @@ const Home = () => {
 
               <button
                 onClick={() => setActiveSection("contact")}
-                className={`px-6 py-2 text-sm md:text-base rounded-full transition-all duration-300 ${
+                className={`px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 text-xs sm:text-sm md:text-base font-medium rounded-full transition-all duration-300 whitespace-nowrap ${
                   activeSection === "contact"
-                    ? "bg-[#14213d] text-white shadow"
-                    : "text-gray-600 hover:text-[#14213d]"
+                    ? "bg-[#14213d] text-white shadow-lg scale-105"
+                    : "text-gray-600 hover:text-[#14213d] hover:bg-white/50"
                 }`}
               >
                 Contact
@@ -95,7 +95,7 @@ const Home = () => {
           </div>
 
           {/* 切替コンテンツ */}
-          <div className="mt-12">
+          <div className="mt-8 md:mt-12">
             {sections[activeSection]}
           </div>
 
