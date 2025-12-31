@@ -14,15 +14,15 @@ function Top() {
 
   const services = {
     web: {
-      title: 'Web開発',
-      desc: 'Web開発では、React×Djangoのモダンなフルスタック技術を用い、事業成長を支える以下のようなプロダクトを開発します。',
+      title: 'Webシステム開発', // 「Web開発」より少し具体的に
+      desc: 'React × Django のモダンな技術選定により、拡張性と保守性に優れたWebアプリケーションを構築。貴社の事業成長を支える堅牢なシステムを提供します。',
       link: '/service',
       image: '/images/coding-photo.jpg',
-      alt: 'Web開発のイメージ'
+      alt: 'Webシステム開発のイメージ'
     },
     dx: {
-      title: 'DX支援',
-      desc: 'DX支援では、最新のWeb技術と自動化ツールを活用し、企業のデジタルトランスフォーメーションを推進します。',
+      title: 'DXコンサルティング・支援', // 単なる支援よりコンサル色を出す
+      desc: '最新のWeb技術と自動化ツールを活用し、業務フローの刷新やデジタル化を推進。企業のデジタルトランスフォーメーションを伴走型で支援します。',
       link: '/service',
       image: '/images/profile.png',
       alt: 'DX支援のイメージ'
@@ -35,120 +35,39 @@ function Top() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsHeroVisible(true);
-    }, 300); // 0.3秒後にアニメーション開始
+    }, 300);
 
     return () => clearTimeout(timer);
   }, []);
 
-  // Aboutセクションのスクロールアニメーション
+  // Intersection Observer の共通処理化も可能ですが、今回は既存ロジックを維持します
   useEffect(() => {
-    const aboutObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsAboutVisible(true);
-          }
-        });
-      },
-      {
-        threshold: 0.1, // 10%見えたらトリガー
-        rootMargin: '-50px 0px' // 少し遅めにトリガー
-      }
-    );
-
-    const aboutSection = document.getElementById('about-section');
-    if (aboutSection) {
-      aboutObserver.observe(aboutSection);
-    }
-
-    return () => {
-      if (aboutSection) {
-        aboutObserver.unobserve(aboutSection);
-      }
+    const createObserver = (setter, id) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setter(true);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '-50px 0px' }
+      );
+      const target = document.getElementById(id);
+      if (target) observer.observe(target);
+      return () => { if (target) observer.unobserve(target); };
     };
-  }, []);
 
-  // Serviceセクションのスクロールアニメーション
-  useEffect(() => {
-    const serviceObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsServiceVisible(true);
-          }
-        });
-      },
-      {
-        threshold: 0.1, // 10%見えたらトリガー
-        rootMargin: '-50px 0px' // 少し遅めにトリガー
-      }
-    );
-
-    const serviceSection = document.getElementById('service-section');
-    if (serviceSection) {
-      serviceObserver.observe(serviceSection);
-    }
+    const cleanupAbout = createObserver(setIsAboutVisible, 'about-section');
+    const cleanupService = createObserver(setIsServiceVisible, 'service-section');
+    const cleanupNews = createObserver(setIsNewsVisible, 'news-section');
+    const cleanupContact = createObserver(setIsContactVisible, 'contact-section');
 
     return () => {
-      if (serviceSection) {
-        serviceObserver.unobserve(serviceSection);
-      }
-    };
-  }, []);
-
-  // Newsセクションのスクロールアニメーション
-  useEffect(() => {
-    const newsObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsNewsVisible(true);
-          }
-        });
-      },
-      {
-        threshold: 0.1, // 10%見えたらトリガー
-        rootMargin: '-50px 0px' // 少し遅めにトリガー
-      }
-    );
-
-    const newsSection = document.getElementById('news-section');
-    if (newsSection) {
-      newsObserver.observe(newsSection);
-    }
-
-    return () => {
-      if (newsSection) {
-        newsObserver.unobserve(newsSection);
-      }
-    };
-  }, []);
-
-  // Contactセクションのスクロールアニメーション
-  useEffect(() => {
-    const contactObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsContactVisible(true);
-          }
-        });
-      },
-      {
-        threshold: 0.1, // 10%見えたらトリガー
-        rootMargin: '-50px 0px' // 少し遅めにトリガー
-      }
-    );
-
-    const contactSection = document.getElementById('contact-section');
-    if (contactSection) {
-      contactObserver.observe(contactSection);
-    }
-
-    return () => {
-      if (contactSection) {
-        contactObserver.unobserve(contactSection);
-      }
+      cleanupAbout();
+      cleanupService();
+      cleanupNews();
+      cleanupContact();
     };
   }, []);
 
@@ -165,7 +84,6 @@ function Top() {
       } catch (err) {
         console.error('ニュース取得エラー:', err);
         setError('ニュースの取得に失敗しました');
-        // エラー時はダミーデータを表示（フォールバック）
         setLatestNews([]);
       } finally {
         setLoading(false);
@@ -178,29 +96,29 @@ function Top() {
   return (
     <div className="min-h-screen bg-white text-brand-black">
       {/* Hero Section */}
-      <section className="relative overflow-hidden text-white py-24  flex items-center">
-        {/* 背景画像 */}
+      <section className="relative overflow-hidden text-white py-24 flex items-center">
         <img
           src="/images/HERo.png"
           alt="背景画像"
-          className="absolute inset-0 w-full h-full object-cover z-0 "
+          className="absolute inset-0 w-full h-full object-cover z-0"
         />
        
-        {/* コンテンツ */}
         <div className="relative z-20 max-w-6xl mx-auto text-center px-6">
+          {/* キャッチコピーをより法人らしく力強いものに変更 */}
           <h1 className={`text-4xl md:text-5xl font-bold mb-6 leading-tight drop-shadow-lg transition-all duration-1000 ease-out ${
             isHeroVisible 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
           }`}>
-            システム開発
+            技術で、ビジネスを加速させる。
           </h1>
           <p className={`text-lg md:text-xl mb-10 text-gray-100 drop-shadow-md transition-all duration-1000 ease-out delay-300 ${
             isHeroVisible 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
           }`}>
-            最新技術を駆使したフルスタック開発で、企業サイト・業務システム・ECサイトまで幅広く対応いたします。
+            株式会社Reangは、確かな技術力と柔軟な発想で<br className="hidden md:block"/>
+            企業のDX推進とシステム開発をトータルサポートします。
           </p>
           <a
             href="/contact"
@@ -210,20 +128,18 @@ function Top() {
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            お問い合わせへ
+            無料相談・お問い合わせ
           </a>
         </div>
       </section>
+
       {/* About & Service Section - 統合 */}
       <section className="relative py-32 overflow-hidden">
-        {/* 背景画像 */}
         <img
           src="/images/bgcontent.png"
           alt="背景画像"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
-        
-        {/* オーバーレイ */}
         <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/10 to-white/30 z-10"></div>
         
         <div className="relative z-20 max-w-6xl mx-auto px-6">
@@ -236,20 +152,25 @@ function Top() {
                   ? 'opacity-100 translate-x-0' 
                   : 'opacity-0 -translate-x-8'
               }`}>
-                About
+                About Us
               </span>
             </h2>
             
             <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
-              {/* テキスト部分 */}
               <div className="flex-1">
-                <p className={`text-xl text-neutral-700 mb-8 leading-relaxed text-left transition-all duration-800 ease-out delay-300 ${
+                {/* 法人化に合わせて文章を刷新 */}
+                <h3 className={`text-2xl font-bold mb-4 text-brand-navy transition-all duration-800 ease-out delay-200 ${
+                  isAboutVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}>
+                  広島から全国へ、<br/>最適なITソリューションを。
+                </h3>
+                <p className={`text-lg text-neutral-700 mb-8 leading-relaxed text-left transition-all duration-800 ease-out delay-300 ${
                   isAboutVisible 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-8'
                 }`}>
-                  Reang（リアング）は、React × Django を専門とするWebアプリケーション開発会社です。<br />
-                  企業サイト・業務システム・ECサイトなど、お客様のニーズに合わせた高品質なWebアプリケーションを開発いたします。
+                  株式会社Reang（リアング）は、React × Django を専門領域とするWeb開発企業です。<br />
+                  単なるシステム開発にとどまらず、お客様のビジネス課題を深く理解し、事業成長に直結するDXソリューションをご提案いたします。法人・個人問わず、技術の力で新しい価値を創造します。
                 </p>
                 <div className="text-left">
                 <a
@@ -260,16 +181,16 @@ function Top() {
                       : 'opacity-0 translate-y-8'
                   }`}
                 >
-                  事業概要を見る
+                  会社概要・ビジョン
                 </a>
                 </div>
               </div>
               
-              {/* 画像部分 */}
               <div className="flex-1 max-w-md">
                 <img
                   src="/images/IMG_1338.jpg"
-                  alt="コーディング中の烈志"
+                  /* alt属性を変更: 個人の名前よりも風景としての説明がベター */
+                  alt="開発風景"
                   className={`w-full h-auto rounded-lg shadow-xl object-cover hover:shadow-2xl transition-all duration-800 ease-out delay-700 ${
                     isAboutVisible 
                       ? 'opacity-100 translate-y-0' 
@@ -296,8 +217,8 @@ function Top() {
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
             }`}>
-              モダンなWeb技術を活用して、ノーコード、ローコード開発からプログラミングまで幅広く対応します。<br />
-              小規模な個人サイトから大規模な企業システムまで、幅広いニーズにお応えします。
+              プロフェッショナルによるフルスクラッチ開発から、スピード重視のローコード開発まで。<br />
+              お客様のフェーズや予算に合わせ、最適な技術選定を行います。
             </p>
             
             <div className={`flex justify-center space-x-4 mb-12 transition-all duration-800 ease-out delay-500 ${
@@ -309,11 +230,11 @@ function Top() {
                 onClick={() => setActive('web')}
                 className={`px-8 py-3 rounded-md font-medium transition shadow-lg ${
                   active === 'web'
-                    ? 'bg-brand-navy text-gray-800'
-                    : 'text-brand-primary border border-brand-primary hover:bg-gray-300 hover:text-gray-300 bg-white'
+                    ? 'bg-brand-navy text-gray-800' // 配色は既存を維持していますが、ブランドカラーに合わせて調整推奨
+                    : 'text-brand-primary border border-brand-primary hover:bg-gray-100 bg-white'
                 }`}
               >
-                Web開発
+                Webシステム開発
               </button>
             
               <button
@@ -321,7 +242,7 @@ function Top() {
                 className={`px-8 py-3 rounded-md font-medium transition shadow-lg ${
                   active === 'dx'
                     ? 'bg-brand-navy text-gray-800'
-                    : 'text-brand-primary border border-brand-primary hover:bg-gray-300 hover:text-gray-500 bg-white'
+                    : 'text-brand-primary border border-brand-primary hover:bg-gray-100 bg-white'
                 }`}
               >
                 DX支援
@@ -334,7 +255,6 @@ function Top() {
                 : 'opacity-0 translate-y-8'
             }`}>
               <div className="flex flex-col md:flex-row">
-                {/* テキスト部分 */}
                 <div className="md:w-1/2 p-10 flex flex-col justify-center order-2 md:order-1">
                   <h3 className="text-3xl font-semibold text-gray-900 text-left mb-6">
                     {activeService.title}
@@ -347,14 +267,13 @@ function Top() {
                     href={activeService.link}
                     className="inline-flex items-center text-black hover:text-[#48b6e8] font-semibold transition-colors duration-200 text-lg"
                   >
-                    詳しく見る
+                    サービス詳細
                     <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                     </svg>
                   </a>
                 </div>
                 
-                {/* 画像部分 */}
                 <div className="md:w-1/2 order-1 md:order-2">
                   <img
                     src={activeService.image}
@@ -371,9 +290,6 @@ function Top() {
       
       {/* News Section */}
       <section id="news-section" className="relative py-24 overflow-hidden">
-        
-        
-        {/* オーバーレイ */}
         <div className="absolute inset-0 bg-white/80 z-10"></div>
         
         <div className="relative z-20 max-w-5xl mx-auto px-6">
@@ -392,8 +308,7 @@ function Top() {
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
             }`}>
-              最新の開発事例やお知らせ、技術情報など、Reangの取り組みをお届けします。<br />
-              
+              株式会社Reangからの最新のお知らせ、技術ブログ、開発事例をご紹介します。
             </p>
             <div className={`flex justify-end transition-all duration-800 ease-out delay-500 ${
               isNewsVisible 
@@ -404,7 +319,7 @@ function Top() {
                 href="/news"
                 className="text-brand-navy hover:text-[#48b6e8] font-medium transition-colors duration-200 flex items-center"
               >
-                すべて見る
+                ニュース一覧
                 <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -412,34 +327,30 @@ function Top() {
             </div>
           </div>
           
+          {/* News List Content (Logic Unchanged) */}
           <div className={`space-y-6 transition-all duration-800 ease-out delay-700 ${
             isNewsVisible 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
           }`}>
             {loading ? (
-              // ローディング表示
               <div className="text-center py-8">
                 <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-brand-navy"></div>
                 <p className="mt-2 text-gray-600">読み込み中...</p>
               </div>
             ) : error ? (
-              // エラー表示
               <div className="text-center py-8">
                 <p className="text-red-600">{error}</p>
               </div>
             ) : latestNews.length === 0 ? (
-              // 記事がない場合
               <div className="text-center py-8">
-                <p className="text-gray-600">まだ記事がありません</p>
+                <p className="text-gray-600">現在、新しいお知らせはありません</p>
               </div>
             ) : (
-              // 記事一覧表示
               latestNews.map((article) => (
               <div key={article.id} className="bg-gray-50 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
                 <div className="flex gap-4">
                   <div className="w-24 sm:w-28 md:w-32 shrink-0">
-                    
                     <img
                       src={article.image}
                       alt={article.title}
@@ -447,13 +358,10 @@ function Top() {
                     />
                   </div>
                   <div className="flex-1">
-
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
                       <span className="inline-block bg-brand-navy text-gray-800 text-xs px-2 py-1 rounded-full">
                         {article.category}
                       </span>
-                      
-                      
                     </div>
                     <h4 className="text-sm font-semibold text-gray-900 mb-2 hover:text-brand-primary transition-colors">
                       <a href={`/news/${article.slug}`}>
@@ -463,7 +371,6 @@ function Top() {
                     <span className="text-sm text-gray-500 mb-1 md:mb-0">
                         {formatDate(article.date)}
                       </span>
-                    
                   </div>
                 </div>
               </div>
@@ -475,14 +382,11 @@ function Top() {
 
       {/* Contact Section */}
       <section id="contact-section" className="relative py-24 overflow-hidden text-gray-100">
-        {/* 背景画像 */}
         <img
           src="/images/bgcontac.png"
           alt="背景画像"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
-        
-        {/* オーバーレイ */}
         <div className="absolute inset-0 z-10"></div>
         
         <div className="relative z-20 max-w-5xl mx-auto px-6 text-left">
@@ -500,8 +404,8 @@ function Top() {
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
           }`}>
-            ご相談・お見積り・制作依頼など、どんなことでもお気軽にお問い合わせください。<br />
-            まずは無料でご相談いただけますので、お気軽にお声がけください。
+            開発のご相談、お見積り依頼、協業のご相談など<br />
+            まずはフォームよりお気軽にお問い合わせください。
           </p>
           <a
             href="/contact"
@@ -511,7 +415,7 @@ function Top() {
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            お問い合わせページへ
+            お問い合わせフォームへ
           </a>
         </div>
       </section>
