@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# サイトマップの場所
+Sitemap: https://reang.jp/sitemap.xml
+
+# クローラーにインデックスを許可
+# 必要に応じて特定のパスをDisallowに設定可能
+# Disallow: /admin/
+# Disallow: /api/
+
