@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import AboutMyStory from "../components/about/AboutMyStory";
+import AboutMyStory from "../components/about/AboutFAQ";
 import AboutWhyReang from "../components/about/AboutWhyReang";
-import AboutSkill from "../components/about/AboutSkill";
+import AboutCompany from "../components/about/AboutCompany";
 
 const About = () => {
   const [active, setActive] = useState("story");
@@ -70,7 +70,7 @@ const About = () => {
               titleVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
             }`}
           >
-            Mission / Vision / Value
+            Mission / Vision 
           </h1>
 
           <div
@@ -81,15 +81,11 @@ const About = () => {
           >
             <p>
               <strong>Mission：</strong>
-              先進技術とスピードで、誰もが挑戦できる環境をつくる。
+              「やりたいこと」を、技術で実現する。
             </p>
             <p>
               <strong>Vision：</strong>
-              個人でも企業と同じスピードで戦える社会をつくる。
-            </p>
-            <p>
-              <strong>Value：</strong>
-              誠実・継続・挑戦・伴走。この4つを軸に、お客様と共に成長します。
+              少人数でも、システムで最大の成果を。
             </p>
           </div>
         </div>
@@ -102,17 +98,6 @@ const About = () => {
         <div className="flex bg-gray-100 rounded-full p-2 shadow-inner gap-2">
 
           <button
-            onClick={() => setActive("story")}
-            className={`px-6 py-2 text-sm md:text-base rounded-full transition-all duration-300 ${
-              active === "story"
-                ? "bg-[#14213d] text-white shadow"
-                : "text-gray-600 hover:text-[#14213d]"
-            }`}
-          >
-            Story
-          </button>
-
-          <button
             onClick={() => setActive("why")}
             className={`px-6 py-2 text-sm md:text-base rounded-full transition-all duration-300 ${
               active === "why"
@@ -120,20 +105,31 @@ const About = () => {
                 : "text-gray-600 hover:text-[#14213d]"
             }`}
           >
-            Why Reang
+          なぜReang？
           </button>
 
+          
+
           <button
-            onClick={() => setActive("skills")}
+            onClick={() => setActive("company")}
             className={`px-6 py-2 text-sm md:text-base rounded-full transition-all duration-300 ${
-              active === "skills"
+              active === "company"
                 ? "bg-[#14213d] text-white shadow"
                 : "text-gray-600 hover:text-[#14213d]"
             }`}
           >
-            Skills
+            会社概要
           </button>
-
+          <button
+            onClick={() => setActive("story")}
+            className={`px-6 py-2 text-sm md:text-base rounded-full transition-all duration-300 ${
+              active === "story"
+                ? "bg-[#14213d] text-white shadow"
+                : "text-gray-600 hover:text-[#14213d]"
+            }`}
+          >
+            よくある質問
+          </button>
         </div>
       </div>
 
@@ -146,7 +142,7 @@ const About = () => {
       >
         {active === "story" && <AboutMyStory />}
         {active === "why" && <AboutWhyReang />}
-        {active === "skills" && <AboutSkill />}
+        {active === "company" && <AboutCompany />}
       </div>
 
       {/* ---------------------------------------------------------------- */}

@@ -32,11 +32,27 @@ const TopService = () => {
   }, []);
 
   const services = [
-    { title: "Web開発", icon: "💻", desc: "企業サイト / EC / 予約システムなどフルスタックで構築" },
-    { title: "DX支援", icon: "⚙️", desc: "業務改善・自動化・クラウド導入を伴走支援" },
-    { title: "システム構築", icon: "🧩", desc: "在庫管理 / 勤怠 / CRM などの業務システムを開発" },
-    { title: "コンサルティング", icon: "💡", desc: "技術選定・運用支援・AI活用まで継続サポート" },
-  ];
+  { 
+    title: "社内システム開発", 
+    icon: "🖥️", 
+    desc: "顧客管理・営業支援・勤怠管理など。業務に合わせた専用システムを構築" 
+  },
+  { 
+    title: "業務Webアプリ", 
+    icon: "📱", 
+    desc: "社内ツールやダッシュボードをWeb化。どこからでもアクセス可能に" 
+  },
+  { 
+    title: "Webサイト・LP制作", 
+    icon: "🌐", 
+    desc: "コーポレートサイトやサービスLP。集客・採用を強化するデザイン" 
+  },
+  { 
+    title: "運用・改善サポート", 
+    icon: "🛠️", 
+    desc: "リリース後の機能追加や改善提案。成長に合わせてシステムを進化" 
+  },
+];
 
   return (
     <div ref={sectionRef} className={`w-full flex flex-col items-center py-10 transition-all duration-700 ease-out ${showAnim ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
@@ -44,8 +60,9 @@ const TopService = () => {
       {/* Title */}
       <h2 className={`text-3xl font-bold mb-6 transition-all duration-700 ease-out ${showAnim ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>サービス一覧</h2>
       <p className={`text-gray-600 mb-10 text-center max-w-2xl leading-relaxed transition-all duration-700 ease-out delay-200 ${showAnim ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-        Reangでは、Web開発・DX支援・業務システム構築・コンサルティングを中心に
-        お客様の課題に合わせたソリューションを提供します。
+        業務システムからWebサイトまで、ワンストップで対応。<br />
+        ご相談は無料です。お気軽にお問い合わせください。
+
       </p>
 
       {/* Cards */}

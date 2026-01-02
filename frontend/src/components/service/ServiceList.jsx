@@ -25,75 +25,103 @@ const ServiceList = () => {
   }, []);
 
   const services = [
-    {
-      title: "Web開発",
-      desc: (
-        <ul className="list-disc pl-5 space-y-1 text-gray-700">
-          <li>企業サイト（コーポレート）制作</li>
-          <li>HP / LP（キャンペーン・採用ページなど）</li>
-          <li>ECサイト（商品販売・決済連携）</li>
-          <li>Webアプリケーションのフルスタック開発</li>
-          <li>ブログ・ニュース・CMS構築</li>
-        </ul>
-      ),
-      icon: (
-        <svg className="w-10 h-10 text-[#14213d]" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M4 4h16v4H4zm0 6h16v10H4z" />
-        </svg>
-      ),
-    },
-    {
-      title: "DX支援",
-      desc: (
-        <ul className="list-disc pl-5 space-y-1 text-gray-700">
-          <li>業務フローの可視化・整理</li>
-          <li>紙/Excel 作業のデジタル化</li>
-          <li>自動化（予約通知・在庫同期・顧客管理など）</li>
-          <li>クラウド導入（Google Workspace / Notion / AppSheet）</li>
-          <li>業務効率を数値化し改善まで伴走</li>
-        </ul>
-      ),
-      icon: (
-        <svg className="w-10 h-10 text-[#14213d]" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2l4 4-4 4-4-4zM4 14h16v2H4z" />
-        </svg>
-      ),
-    },
-    {
-      title: "業務システム構築",
-      desc: (
+  {
+    title: "社内システム開発",
+    desc: (
+      <>
+        <p className="text-gray-700 mb-4">
+          顧客管理、営業支援、勤怠管理など、業務に合わせた専用システムを構築します。
+          Excelやスプレッドシートでの管理から脱却し、効率的な業務フローを実現。
+        </p>
         <ul className="list-disc pl-5 space-y-1 text-gray-700">
           <li>顧客管理システム（CRM）</li>
-          <li>予約管理システム（店舗・サロン・スクール）</li>
-          <li>在庫管理（入出庫・棚卸し）</li>
-          <li>勤怠管理（打刻・集計）</li>
-          <li>受発注管理・売上管理</li>
+          <li>営業支援ツール（SFA）</li>
+          <li>勤怠・シフト管理</li>
+          <li>在庫・発注管理</li>
+          <li>予約管理システム</li>
+          <li>受発注・請求管理</li>
         </ul>
-      ),
-      icon: (
-        <svg className="w-10 h-10 text-[#14213d]" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M4 4h16v6H4zm0 8h16v8H4z" />
-        </svg>
-      ),
-    },
-    {
-      title: "コンサルティング",
-      desc: (
+      </>
+    ),
+    icon: (
+      <svg className="w-10 h-10 text-[#14213d]" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M4 4h16v6H4zm0 8h16v8H4z" />
+      </svg>
+    ),
+  },
+  {
+    title: "業務Webアプリ開発",
+    desc: (
+      <>
+        <p className="text-gray-700 mb-4">
+          社内ツールやダッシュボードをWeb化。ブラウザからアクセスできるため、
+          どこからでも業務が可能に。リモートワークにも最適です。
+        </p>
         <ul className="list-disc pl-5 space-y-1 text-gray-700">
-          <li>現場ヒアリングによる課題抽出</li>
-          <li>業務改善の優先順位付けと戦略提案</li>
-          <li>ノーコード/ローコード導入支援（AppSheet / Glide）</li>
-          <li>AI活用提案（自動化・文章生成・返信効率化）</li>
-          <li>現場オペレーションを理解した実践的アドバイス</li>
+          <li>管理画面・ダッシュボード</li>
+          <li>社内ポータル・情報共有ツール</li>
+          <li>レポート自動生成システム</li>
+          <li>承認ワークフローシステム</li>
+          <li>データ分析・可視化ツール</li>
+          <li>API連携・外部サービス統合</li>
         </ul>
-      ),
-      icon: (
-        <svg className="w-10 h-10 text-[#14213d]" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2a5 5 0 015 5H7a5 5 0 015-5zm-5 9h10v11H7z" />
-        </svg>
-      ),
-    },
-  ];
+      </>
+    ),
+    icon: (
+      <svg className="w-10 h-10 text-[#14213d]" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M4 4h16v4H4zm0 6h16v10H4z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Webサイト・LP制作",
+    desc: (
+      <>
+        <p className="text-gray-700 mb-4">
+          コーポレートサイトやサービスLP、採用サイトなど、
+          集客・採用を強化するデザインと実装を提供します。
+        </p>
+        <ul className="list-disc pl-5 space-y-1 text-gray-700">
+          <li>コーポレートサイト制作</li>
+          <li>サービスLP（ランディングページ）</li>
+          <li>採用サイト・リクルーティングページ</li>
+          <li>ECサイト構築</li>
+          <li>ブログ・メディアサイト</li>
+          <li>レスポンシブ対応・SEO最適化</li>
+        </ul>
+      </>
+    ),
+    icon: (
+      <svg className="w-10 h-10 text-[#14213d]" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M4 4h16v4H4zm0 6h16v10H4z" />
+      </svg>
+    ),
+  },
+  {
+    title: "運用・改善サポート",
+    desc: (
+      <>
+        <p className="text-gray-700 mb-4">
+          リリース後の機能追加、改善提案、トラブル対応まで継続的にサポート。
+          成長に合わせてシステムを進化させます。
+        </p>
+        <ul className="list-disc pl-5 space-y-1 text-gray-700">
+          <li>機能追加・改修対応</li>
+          <li>パフォーマンス改善・最適化</li>
+          <li>セキュリティアップデート</li>
+          <li>障害対応・トラブルシューティング</li>
+          <li>定期メンテナンス</li>
+          <li>技術相談・改善提案</li>
+        </ul>
+      </>
+    ),
+    icon: (
+      <svg className="w-10 h-10 text-[#14213d]" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2l4 4-4 4-4-4zM4 14h16v2H4z" />
+      </svg>
+    ),
+  },
+];
 
   return (
     <div
@@ -118,9 +146,9 @@ const ServiceList = () => {
               <h3 className="text-xl font-semibold text-[#14213d]">
                 {service.title}
               </h3>
-              <p className="text-gray-700 mt-2 leading-relaxed">
+              <div className="text-gray-700 mt-2 leading-relaxed">
                 {service.desc}
-              </p>
+              </div>
             </div>
           </div>
         ))}

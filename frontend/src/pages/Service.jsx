@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ServiceList from "../components/service/ServiceList";
-import ServiceFlow from "../components/service/ServiceFlow";
+import Pricing from "../components/service/Pricing";
 
 const Service = () => {
   const [active, setActive] = useState("services");
@@ -85,7 +85,8 @@ const Service = () => {
               textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            Web制作・アプリ開発・システム構築まで、事業に合わせた最適なソリューションをご提供します。
+            システム開発からWebサイト制作、運用サポートまで。<br />
+            スタートアップの成長を、ワンストップで支援します。
           </p>
         </div>
       </section>
@@ -108,14 +109,14 @@ const Service = () => {
           </button>
 
           <button
-            onClick={() => setActive("flow")}
+            onClick={() => setActive("price")}
             className={`px-6 py-2 text-sm md:text-base rounded-full transition-all duration-300 ${
-              active === "flow"
+              active === "price"
                 ? "bg-[#14213d] text-white shadow"
                 : "text-gray-600 hover:text-[#14213d]"
             }`}
           >
-            制作の流れ
+            費用について
           </button>
 
         </div>
@@ -125,11 +126,10 @@ const Service = () => {
       {/* ③ Toggle Content */}
       {/* --------------------------------------------------------------- */}
       <div
-        key={active}
         className="transition-opacity duration-700 mt-16"
       >
-        {active === "services" && <ServiceList />}
-        {active === "flow" && <ServiceFlow steps={steps} />}
+        {active === "services" && <ServiceList key="services" />}
+        {active === "price" && <Pricing key="price" />}
       </div>
 
       {/* --------------------------------------------------------------- */}

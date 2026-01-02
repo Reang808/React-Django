@@ -22,69 +22,207 @@ const AboutWhyReang = () => {
     return () => ref.current && obs.unobserve(ref.current);
   }, []);
 
+  const strengths = [
+    {
+      title: "フルスタック開発で一貫対応",
+      description:
+        "フロントからバックエンド、インフラまで一貫開発。窓口が一本化されるため、スピーディーかつ正確な開発が可能です。",
+      technologies: ["React", "Next.js", "Django", "Python", "Docker", "AWS"],
+      icon: "⚡",
+      examples: [
+        "企画・要件定義から納品まで一貫サポート",
+        "複数の業者とやり取りする手間を削減",
+        "認識のズレを最小限に",
+      ],
+    },
+    {
+      title: "業務システムの豊富な実績",
+      description:
+        "顧客管理、在庫管理、予約システムなど、実際の業務で使われるシステムの開発経験が豊富。現場で本当に使えるツールを構築します。",
+      technologies: null,
+      icon: "🛠️",
+      examples: [
+        "顧客管理システム（CRM）",
+        "在庫管理システム",
+        "予約管理システム",
+        "勤怠管理システム",
+      ],
+    },
+    {
+      title: "予算に応じた柔軟な開発",
+      description:
+        "MVPから本格展開まで、フェーズに応じた提案が可能。「予算○○万円でできる範囲で」というご相談も大歓迎です。",
+      technologies: null,
+      icon: "💰",
+      examples: [
+        "MVP開発（最小限の機能で素早くリリース）",
+        "段階的な機能追加",
+        "既存システムの改修",
+      ],
+    },
+    {
+      title: "継続的なサポート体制",
+      description:
+        "リリースして終わりではなく、運用保守も充実。機能追加、改善提案、トラブル対応まで長期サポートします。",
+      technologies: null,
+      icon: "🤝",
+      examples: [
+        "月次サポート（月額5万円〜）",
+        "スポット対応",
+        "技術相談・改善提案",
+      ],
+    },
+  ];
+
+  const techStack = [
+    {
+      category: "フロントエンド",
+      items: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
+      color: "bg-orange-500",
+    },
+    {
+      category: "バックエンド",
+      items: ["Django", "Django REST Framework", "Python", "PostgreSQL"],
+      color: "bg-blue-500",
+    },
+    {
+      category: "インフラ",
+      items: ["Docker", "AWS", "Netlify", "Vercel"],
+      color: "bg-purple-600",
+    },
+  ];
+
   return (
     <section
       ref={ref}
-      className={`max-w-6xl mx-auto px-6 py-24 transition-all duration-1000 ${
+      className={`max-w-6xl mx-auto px-6 py-20 transition-all duration-1000 ${
         show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
-      <h2 className="text-3xl font-bold mb-10 text-center">
-        Why Reang?
-      </h2>
-
-      <div className="relative w-full max-w-4xl mx-auto mb-16">
-        <img
-          src="/images/profile.png"
-          alt="Reang Workspace Main"
-          className="w-full h-72 md:h-96 object-cover rounded-2xl shadow-lg"
-        />
-
-        <img
-          src="/images/IMG_9984.jpg"
-          alt="Reang Sub Visual"
-          className="absolute bottom-[-20px] right-[-20px] w-40 h-40 md:w-56 md:h-56 object-cover rounded-xl shadow-xl border-4 border-white"
-        />
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold mb-4 text-[#14213d]">
+          Reangを選ぶ理由
+        </h2>
+        <p className="text-gray-600 text-lg">
+          スタートアップの成長を支える、4つの強み
+        </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-10">
+      {/* 強み一覧 */}
+      <div className="space-y-10 mb-20">
+        {strengths.map((strength, index) => (
+          <div
+            key={index}
+            className={`bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 ${
+              show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+            style={{ transitionDelay: `${index * 150}ms` }}
+          >
+            <div className="flex items-start gap-4 mb-4">
+              <span className="text-5xl">{strength.icon}</span>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-[#14213d] mb-3">
+                  {strength.title}
+                </h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  {strength.description}
+                </p>
 
-        <div className="p-6 bg-white shadow-md rounded-xl hover:shadow-lg transition-shadow">
-          <h3 className="text-xl font-semibold mb-3">フルスタックで完結</h3>
-          <p className="text-gray-700 leading-relaxed">
-            企画・設計・フロント・バックエンド・インフラまで  
-            すべて一貫して対応できます。窓口を一本化できるため、  
-            スピードと正確性が圧倒的に高まります。
-          </p>
+                {/* 技術スタック表示 */}
+                {strength.technologies && (
+                  <div className="mb-4">
+                    <p className="text-sm font-semibold text-gray-500 mb-2">
+                      使用技術
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {strength.technologies.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 bg-blue-50 text-[#14213d] rounded-full text-sm font-medium border border-blue-100"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* 具体例 */}
+                {strength.examples && (
+                  <div>
+                    <p className="text-sm font-semibold text-gray-500 mb-2">
+                      具体的には
+                    </p>
+                    <ul className="space-y-2">
+                      {strength.examples.map((example, idx) => (
+                        <li
+                          key={idx}
+                          className="text-gray-700 flex items-start text-sm"
+                        >
+                          <span className="text-[#48b6e8] mr-2 flex-shrink-0">
+                            ✓
+                          </span>
+                          <span>{example}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* 技術スタック */}
+      <div
+        className={`transition-all duration-1000 delay-700 ${
+          show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      >
+        <h3 className="text-3xl font-bold text-center mb-8 text-[#14213d]">
+          技術スタック
+        </h3>
+        <p className="text-center text-gray-600 mb-10">
+          モダンな技術で、拡張性の高いシステムを構築
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {techStack.map((stack, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`w-1 h-12 ${stack.color} rounded-full`}></div>
+                <h4 className="text-xl font-bold text-[#14213d]">
+                  {stack.category}
+                </h4>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {stack.items.map((item, idx) => (
+                  <span
+                    key={idx}
+                    className="px-3 py-2 bg-gray-50 text-gray-700 rounded-lg text-sm font-medium border border-gray-200 hover:border-[#48b6e8] transition-colors"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="p-6 bg-white shadow-md rounded-xl hover:shadow-lg transition-shadow">
-          <h3 className="text-xl font-semibold mb-3">小回りとスピード</h3>
-          <p className="text-gray-700 leading-relaxed">
-            個人事業・小規模事業者に最適化された柔軟な対応が可能です。  
-            「早く形にしたい」「相談しながら進めたい」という方に  
-            ぴったりの伴走型スタイルです。
+        <div className="mt-10 text-center p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl">
+          <p className="text-gray-700 text-lg leading-relaxed">
+            これらの技術を組み合わせて、
+            <br className="md:hidden" />
+            <span className="font-bold text-[#14213d]">
+              スケーラブルで保守性の高いシステム
+            </span>
+            を提供します。
           </p>
         </div>
-
-        <div className="p-6 bg-white shadow-md rounded-xl hover:shadow-lg transition-shadow">
-          <h3 className="text-xl font-semibold mb-3">業務理解が強い</h3>
-          <p className="text-gray-700 leading-relaxed">
-            在庫管理・勤怠管理・予約システム・顧客管理など、  
-            中小企業の実務に直結したシステムの開発経験が豊富です。  
-            「現場で本当に使える」プロダクトを構築できます。
-          </p>
-        </div>
-
-        <div className="p-6 bg-white shadow-md rounded-xl hover:shadow-lg transition-shadow">
-          <h3 className="text-xl font-semibold mb-3">0→1の伴走力</h3>
-          <p className="text-gray-700 leading-relaxed">
-            アイデアを形にし、MVP開発・改善まで一緒に進める  
-            伴走型支援が得意です。企画段階の曖昧な悩みからでも  
-            気軽にご相談いただけます。
-          </p>
-        </div>
-
       </div>
     </section>
   );
