@@ -4,7 +4,7 @@ import AboutWhyReang from "../components/about/AboutWhyReang";
 import AboutCompany from "../components/about/AboutCompany";
 
 const About = () => {
-  const [active, setActive] = useState("story");
+  const [active, setActive] = useState("why");
 
   const heroRef = useRef(null);
   const [heroVisible, setHeroVisible] = useState(false);
@@ -96,7 +96,7 @@ const About = () => {
       {/* ---------------------------------------------------------------- */}
       <div className="w-full flex justify-center mt-12">
         <div className="flex bg-gray-100 rounded-full p-2 shadow-inner gap-2">
-
+          
           <button
             onClick={() => setActive("why")}
             className={`px-6 py-2 text-sm md:text-base rounded-full transition-all duration-300 ${
