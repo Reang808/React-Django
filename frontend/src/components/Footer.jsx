@@ -99,10 +99,10 @@ function Footer() {
         <div>
           <h4 className="text-gray-900 font-semibold mb-3">サービス</h4>
           <ul className="space-y-2 text-sm">
-            <li className="text-gray-600">Web開発</li>
-            <li className="text-gray-600">DX支援</li>
-            <li className="text-gray-600">システム構築</li>
-            <li className="text-gray-600">コンサルティング</li>
+            <li className="text-gray-600">社内システム</li>
+            <li className="text-gray-600">業務アプリ</li>
+            <li className="text-gray-600">Webサイト・LP制作</li>
+            <li className="text-gray-600">運用・改善サポート</li>
           </ul>
         </div>
        
