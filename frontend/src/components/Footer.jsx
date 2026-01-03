@@ -22,7 +22,7 @@ function Footer() {
           <div className="flex space-x-4">
             {/* Facebook */}
             <a
-              href="https://www.facebook.com/780813908451391"
+              href="https://www.facebook.com/61579444083301"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity duration-200"
