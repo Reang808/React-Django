@@ -14,7 +14,7 @@ function Footer() {
           
           <p className="text-sm leading-relaxed mb-6">
             代表：後藤田 烈志<br />
-            所在地：〒730-0013 <br />広島県広島市中区鉄炮町8-24 <br></br>にしたやビル 704<br />
+            所在地：〒730-0017 <br />広島県広島市中区鉄炮町8-24 <br></br>にしたやビル 704<br />
             メールアドレス：info@reang.jp<br />
           </p>
           
