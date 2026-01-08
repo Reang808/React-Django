@@ -98,50 +98,50 @@ const AboutWhyReang = () => {
   return (
     <section
       ref={ref}
-      className={`max-w-6xl mx-auto px-6 py-20 transition-all duration-1000 ${
+      className={`max-w-6xl mx-auto px-4 md:px-6 py-12 md:py-20 transition-all duration-1000 ${
         show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4 text-[#14213d]">
+      <div className="text-center mb-8 md:mb-12">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4 text-[#14213d]">
           Reangを選ぶ理由
         </h2>
-        <p className="text-gray-600 text-lg">
+        <p className="text-sm sm:text-base md:text-lg text-gray-600">
           スタートアップの成長を支える、4つの強み
         </p>
       </div>
 
       {/* 強み一覧 */}
-      <div className="space-y-10 mb-20">
+      <div className="space-y-6 md:space-y-10 mb-12 md:mb-20">
         {strengths.map((strength, index) => (
           <div
             key={index}
-            className={`bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 ${
+            className={`bg-white rounded-2xl shadow-lg p-4 md:p-6 lg:p-8 hover:shadow-xl transition-all duration-300 ${
               show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
             style={{ transitionDelay: `${index * 150}ms` }}
           >
-            <div className="flex items-start gap-4 mb-4">
-              <span className="text-5xl">{strength.icon}</span>
+            <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+              <span className="text-3xl sm:text-4xl md:text-5xl">{strength.icon}</span>
               <div className="flex-1">
-                <h3 className="text-2xl font-bold text-[#14213d] mb-3">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#14213d] mb-2 md:mb-3">
                   {strength.title}
                 </h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3 md:mb-4">
                   {strength.description}
                 </p>
 
                 {/* 技術スタック表示 */}
                 {strength.technologies && (
-                  <div className="mb-4">
-                    <p className="text-sm font-semibold text-gray-500 mb-2">
+                  <div className="mb-3 md:mb-4">
+                    <p className="text-xs sm:text-sm font-semibold text-gray-500 mb-2">
                       使用技術
                     </p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 md:gap-2">
                       {strength.technologies.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 bg-blue-50 text-[#14213d] rounded-full text-sm font-medium border border-blue-100"
+                          className="px-2 py-0.5 md:px-3 md:py-1 bg-blue-50 text-[#14213d] rounded-full text-xs sm:text-sm font-medium border border-blue-100"
                         >
                           {tech}
                         </span>
@@ -153,16 +153,16 @@ const AboutWhyReang = () => {
                 {/* 具体例 */}
                 {strength.examples && (
                   <div>
-                    <p className="text-sm font-semibold text-gray-500 mb-2">
+                    <p className="text-xs sm:text-sm font-semibold text-gray-500 mb-2">
                       具体的には
                     </p>
-                    <ul className="space-y-2">
+                    <ul className="space-y-1.5 md:space-y-2">
                       {strength.examples.map((example, idx) => (
                         <li
                           key={idx}
-                          className="text-gray-700 flex items-start text-sm"
+                          className="text-gray-700 flex items-start text-xs sm:text-sm"
                         >
-                          <span className="text-[#48b6e8] mr-2 flex-shrink-0">
+                          <span className="text-[#48b6e8] mr-2 shrink-0">
                             ✓
                           </span>
                           <span>{example}</span>
@@ -183,30 +183,30 @@ const AboutWhyReang = () => {
           show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <h3 className="text-3xl font-bold text-center mb-8 text-[#14213d]">
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 md:mb-8 text-[#14213d]">
           技術スタック
         </h3>
-        <p className="text-center text-gray-600 mb-10">
+        <p className="text-center text-sm sm:text-base text-gray-600 mb-6 md:mb-10">
           モダンな技術で、拡張性の高いシステムを構築
         </p>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6">
           {techStack.map((stack, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300"
+              className="bg-white rounded-xl shadow-md p-4 md:p-6 hover:shadow-lg transition-all duration-300"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className={`w-1 h-12 ${stack.color} rounded-full`}></div>
-                <h4 className="text-xl font-bold text-[#14213d]">
+              <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                <div className={`w-1 h-8 md:h-12 ${stack.color} rounded-full`}></div>
+                <h4 className="text-base sm:text-lg md:text-xl font-bold text-[#14213d]">
                   {stack.category}
                 </h4>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 md:gap-2">
                 {stack.items.map((item, idx) => (
                   <span
                     key={idx}
-                    className="px-3 py-2 bg-gray-50 text-gray-700 rounded-lg text-sm font-medium border border-gray-200 hover:border-[#48b6e8] transition-colors"
+                    className="px-2 py-1 md:px-3 md:py-2 bg-gray-50 text-gray-700 rounded-lg text-xs sm:text-sm font-medium border border-gray-200 hover:border-[#48b6e8] transition-colors"
                   >
                     {item}
                   </span>
@@ -216,8 +216,8 @@ const AboutWhyReang = () => {
           ))}
         </div>
 
-        <div className="mt-10 text-center p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl">
-          <p className="text-gray-700 text-lg leading-relaxed">
+        <div className="mt-6 md:mt-10 text-center p-4 md:p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl">
+          <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
             これらの技術を組み合わせて、
             <br className="md:hidden" />
             <span className="font-bold text-[#14213d]">

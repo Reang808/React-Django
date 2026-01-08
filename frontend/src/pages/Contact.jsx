@@ -75,7 +75,7 @@ function Contact() {
   return (
     <div className="min-h-screen bg-gray-100 text-neutral-900 font-sans">
       {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden text-gray-100">
+      <section className="relative py-12 md:py-24 overflow-hidden text-gray-100">
         {/* 背景画像 */}
         <img
           src="/images/bgcontac.png"
@@ -86,13 +86,13 @@ function Contact() {
         {/* オーバーレイ */}
         <div className="absolute inset-0 z-10"></div>
         
-        <div className="relative z-20 max-w-6xl mx-auto px-6 text-center">
-          <h1 className={`text-4xl text-brand-primary md:text-5xl font-bold mb-6 transition-all duration-1000 ease-out ${
+        <div className="relative z-20 max-w-6xl mx-auto px-4 md:px-6 text-center">
+          <h1 className={`text-2xl sm:text-3xl md:text-5xl text-brand-primary font-bold mb-4 md:mb-6 transition-all duration-1000 ease-out ${
             isHeroVisible 
               ? 'opacity-100 translate-x-0' 
               : 'opacity-0 -translate-x-8'
           }`}>お問い合わせ</h1>
-          <p className={`text-lg text-brand-primary transition-all duration-1000 ease-out delay-300 ${
+          <p className={`text-sm sm:text-base md:text-lg text-brand-primary transition-all duration-1000 ease-out delay-300 ${
             isHeroVisible 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
@@ -103,17 +103,17 @@ function Contact() {
       </section>
  
       {/* Contact Methods */}
-      <section className="py-24 bg-brand-gray">
-        <div className="max-w-5xl mx-auto px-6 text-left space-y-20">
+      <section className="py-12 md:py-24 bg-brand-gray">
+        <div className="max-w-5xl mx-auto px-4 md:px-6 text-left space-y-12 md:space-y-20">
           {/* 1. フォーム連絡 */}
           <div>
-            <h2 className="text-3xl font-bold text-brand-black mb-6 border-l-4 border-brand-navy pl-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-brand-black mb-4 md:mb-6 border-l-4 border-brand-navy pl-3">
               お問い合わせフォーム
             </h2>
-            <p className="text-neutral-700 mb-8">
+            <p className="text-sm sm:text-base text-neutral-700 mb-6 md:mb-8">
               フォームからご連絡いただいた後、内容を確認しメールでご返信いたします。
             </p>
-            <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-8 space-y-6">
+            <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
               {/* 送信結果メッセージ */}
               {submitMessage && (
                 <div className={`p-4 rounded-md ${
@@ -126,7 +126,7 @@ function Contact() {
               )}
               
               <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-brand-navy mb-2">
+                <label htmlFor="name" className="block text-xs sm:text-sm font-semibold text-brand-navy mb-2">
                   お名前 <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -136,13 +136,13 @@ function Contact() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand-sky"
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 md:px-4 md:py-2 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-brand-sky"
                   placeholder="例：山田 太郎"
                   disabled={isSubmitting}
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-brand-navy mb-2">
+                <label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-brand-navy mb-2">
                   メールアドレス <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -152,13 +152,13 @@ function Contact() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand-sky"
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 md:px-4 md:py-2 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-brand-sky"
                   placeholder="例：info@example.com"
                   disabled={isSubmitting}
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-brand-navy mb-2">
+                <label htmlFor="message" className="block text-xs sm:text-sm font-semibold text-brand-navy mb-2">
                   お問い合わせ内容 <span className="text-red-500">*</span>
                 </label>
                 <textarea
@@ -167,7 +167,7 @@ function Contact() {
                   value={formData.message}
                   onChange={handleInputChange}
                   required
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 h-32 focus:outline-none focus:ring-2 focus:ring-brand-sky"
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 md:px-4 md:py-2 h-28 md:h-32 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-brand-sky"
                   placeholder="ご要望・お問い合わせ内容をご記入ください。"
                   disabled={isSubmitting}
                 ></textarea>
@@ -175,7 +175,7 @@ function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full px-8 py-3 rounded-md font-semibold transition ${
+                className={`w-full px-6 py-2.5 md:px-8 md:py-3 rounded-md text-sm md:text-base font-semibold transition ${
                   isSubmitting
                     ? 'bg-gray-400 text-gray-800 cursor-not-allowed'
                     : 'bg-brand-primary text-white hover:bg-brand-secondary'
@@ -188,27 +188,27 @@ function Contact() {
 
           {/* 2. LINEでのご連絡 */}
           <div>
-            <h2 className="text-3xl font-bold text-brand-black mb-6 border-l-4 border-brand-navy pl-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-brand-black mb-4 md:mb-6 border-l-4 border-brand-navy pl-3">
               LINEでのご連絡
             </h2>
-            <p className="text-neutral-700 mb-6">
+            <p className="text-sm sm:text-base text-neutral-700 mb-4 md:mb-6">
               公式LINEを追加していただき、簡単な質問にご回答後、ヒアリングやお見積りを行います。
             </p>
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 bg-white shadow rounded-lg p-8">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 bg-white shadow rounded-lg p-4 md:p-6 lg:p-8">
               <img
                 src="https://qr-official.line.me/gs/M_155yuhvy_GW.png?oat_content=qr"
                 alt="LINE QRコード"
-                className="w-40 h-40 object-contain rounded-md border"
+                className="w-32 h-32 sm:w-40 sm:h-40 object-contain rounded-md border mx-auto md:mx-0"
               />
-              <div>
-                <p className="text-neutral-700 mb-4">
+              <div className="flex-1">
+                <p className="text-sm sm:text-base text-neutral-700 mb-4">
                   下のボタンからLINE公式アカウントを追加できます。
                 </p>
                 <a
                   href="https://linevoom.line.me/user/_dUXiZG-QzYilD8hygKJSa1HU5xfLbnqvpln54bA" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-[#06C755] text-white px-6 py-3 rounded-md font-semibold hover:opacity-90 transition"
+                  className="inline-block bg-[#06C755] text-white px-5 py-2 md:px-6 md:py-3 rounded-md text-sm md:text-base font-semibold hover:opacity-90 transition"
                 >
                   LINEで相談する
                 </a>
@@ -218,19 +218,19 @@ function Contact() {
 
           {/* 3. 緊急の方へ */}
           <div>
-            <h2 className="text-3xl font-bold text-brand-black mb-6 border-l-4 border-brand-navy pl-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-brand-black mb-4 md:mb-6 border-l-4 border-brand-navy pl-3">
               緊急のご連絡
             </h2>
-            <p className="text-neutral-700 mb-6">
+            <p className="text-sm sm:text-base text-neutral-700 mb-4 md:mb-6">
               急ぎのご依頼・トラブル対応はお電話でも受け付けております。<br />
               営業時間外の場合は折り返しのご連絡となる場合がございます。
             </p>
-            <div className="bg-white shadow rounded-lg p-8 flex items-center justify-between flex-col md:flex-row">
+            <div className="bg-white shadow rounded-lg p-4 md:p-6 lg:p-8 flex items-center justify-between flex-col md:flex-row">
               <div>
-                <p className="text-xl font-semibold text-brand-navy mb-2">
+                <p className="text-lg sm:text-xl font-semibold text-brand-navy mb-2">
                   電話番号
                 </p>
-                <p className="text-2xl font-bold text-brand-black tracking-wide">
+                <p className="text-xl sm:text-2xl font-bold text-brand-black tracking-wide">
                   080-8636-3296
                 </p>
               </div>

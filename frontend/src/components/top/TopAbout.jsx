@@ -31,35 +31,35 @@ const TopAbout = () => {
       ref={aboutRef}
       className={`w-full flex flex-col items-center transition-all duration-700 ease-out ${showAnim ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
     >
-      <div className="w-full max-w-6xl bg-white shadow-lg rounded-2xl p-6 md:p-8">
+      <div className="w-full max-w-6xl bg-white shadow-lg rounded-2xl p-4 md:p-6 lg:p-8">
         
         {/* ヘッダー部分：画像 + タイトル */}
-        <div className="flex flex-col md:flex-row items-center gap-6 pb-6 mb-6 border-b-2 border-gray-100">
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 pb-4 md:pb-6 mb-4 md:mb-6 border-b-2 border-gray-100">
           {/* プロフィール写真 */}
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <img
               src="/images/binmy.JPG"
               alt="Profile"
-              className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg ring-4 ring-gray-100"
+              className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg ring-4 ring-gray-100"
             />
           </div>
 
           {/* タイトルと説明 */}
           <div className="flex-1 text-center md:text-left">
-            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-[#14213d]">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-[#14213d]">
               Reang（リアング）について
             </h2>
-            <p className="text-gray-600 text-sm md:text-base">
+            <p className="text-gray-600 text-xs sm:text-sm md:text-base">
               React（リアクト） × Django（ジャンゴ）で、スタートアップの成長を支える開発パートナー
             </p>
           </div>
         </div>
 
         {/* タブナビゲーション */}
-        <div className="flex gap-3 md:gap-6 border-b pb-2 mb-6 overflow-x-auto">
+        <div className="flex gap-2 md:gap-3 lg:gap-6 border-b pb-2 mb-4 md:mb-6 overflow-x-auto">
           <button
             onClick={() => setActive("overview")}
-            className={`pb-2 px-2 transition-all whitespace-nowrap text-sm md:text-base ${
+            className={`pb-2 px-2 transition-all whitespace-nowrap text-xs sm:text-sm md:text-base ${
               active === "overview"
                 ? "border-b-2 border-[#14213d] font-semibold text-[#14213d]"
                 : "text-gray-500 hover:text-gray-700"
@@ -70,7 +70,7 @@ const TopAbout = () => {
 
           <button
             onClick={() => setActive("message")}
-            className={`pb-2 px-2 transition-all whitespace-nowrap text-sm md:text-base ${
+            className={`pb-2 px-2 transition-all whitespace-nowrap text-xs sm:text-sm md:text-base ${
               active === "message"
                 ? "border-b-2 border-[#14213d] font-semibold text-[#14213d]"
                 : "text-gray-500 hover:text-gray-700"
@@ -81,7 +81,7 @@ const TopAbout = () => {
 
           <button
             onClick={() => setActive("career")}
-            className={`pb-2 px-2 transition-all whitespace-nowrap text-sm md:text-base ${
+            className={`pb-2 px-2 transition-all whitespace-nowrap text-xs sm:text-sm md:text-base ${
               active === "career"
                 ? "border-b-2 border-[#14213d] font-semibold text-[#14213d]"
                 : "text-gray-500 hover:text-gray-700"
@@ -92,7 +92,7 @@ const TopAbout = () => {
         </div>
 
         {/* コンテンツエリア */}
-        <div className="text-gray-700 leading-relaxed text-sm md:text-base">
+        <div className="text-gray-700 leading-relaxed text-xs sm:text-sm md:text-base">
 
             {/* 事業概要 */}
             {active === "overview" && (
@@ -150,10 +150,10 @@ const TopAbout = () => {
         </div>
 
         {/* About ページへのリンク */}
-        <div className="mt-8 flex justify-center">
+        <div className="mt-6 md:mt-8 flex justify-center">
           <a
             href="/about"
-            className="inline-block bg-[#14213d] text-white px-6 py-3 rounded-md shadow hover:bg-[#48b6e8] transition-all"
+            className="inline-block bg-[#14213d] text-white px-5 py-2 md:px-6 md:py-3 rounded-md text-sm md:text-base shadow hover:bg-[#48b6e8] transition-all"
           >
             詳しく見る
           </a>

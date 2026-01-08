@@ -43,13 +43,13 @@ const AboutCompany = () => {
   return (
     <section
       ref={ref}
-      className={`max-w-4xl mx-auto px-6 py-20 transition-all duration-1000 ${
+      className={`max-w-4xl mx-auto px-4 md:px-6 py-12 md:py-20 transition-all duration-1000 ${
         show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4 text-[#14213d]">会社概要</h2>
-        <p className="text-gray-600 text-lg">
+      <div className="text-center mb-8 md:mb-12">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4 text-[#14213d]">会社概要</h2>
+        <p className="text-sm sm:text-base md:text-lg text-gray-600">
           現在登記申請中のため、詳細は追って公開いたします。
         </p>
       </div>

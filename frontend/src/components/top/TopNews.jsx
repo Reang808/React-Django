@@ -52,14 +52,14 @@ const TopNews = () => {
   return (
     <div
       ref={sectionRef}
-      className={`w-full flex flex-col items-center py-10 transition-all duration-700 ease-out ${showAnim ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+      className={`w-full flex flex-col items-center py-8 md:py-10 transition-all duration-700 ease-out ${showAnim ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
     >
-      <h2 className={`text-3xl font-bold mb-6 transition-all duration-700 ease-out ${showAnim ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>最新ニュース</h2>
-      <p className={`text-gray-600 mb-10 text-center max-w-2xl transition-all duration-700 ease-out delay-200 ${showAnim ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+      <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold mb-4 md:mb-6 transition-all duration-700 ease-out ${showAnim ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>最新ニュース</h2>
+      <p className={`text-sm sm:text-base md:text-base text-gray-600 mb-6 md:mb-10 text-center max-w-2xl transition-all duration-700 ease-out delay-200 px-4 ${showAnim ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
         お知らせ・サービス更新・技術記事など最新情報をお届けします。
       </p>
 
-      <div className="grid md:grid-cols-3 gap-6 w-full max-w-6xl px-4">
+      <div className="grid md:grid-cols-3 gap-4 md:gap-6 w-full max-w-6xl px-4">
         {articles.map((article, index) => (
           <a
             key={article.id}
@@ -72,20 +72,20 @@ const TopNews = () => {
             <img
               src={article.image}
               alt={article.title}
-              className="w-full h-40 object-cover"
+              className="w-full h-32 sm:h-40 object-cover"
             />
 
             {/* 内容 */}
-            <div className="p-5">
-              <span className="inline-block bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded-full mb-3">
+            <div className="p-4 md:p-5">
+              <span className="inline-block bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded-full mb-2 md:mb-3">
                 {article.category}
               </span>
 
-              <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+              <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
                 {article.title}
               </h3>
 
-              <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+              <p className="text-gray-600 text-xs sm:text-sm mb-2 md:mb-3 line-clamp-2">
                 {article.excerpt}
               </p>
 
@@ -99,7 +99,7 @@ const TopNews = () => {
 
       <a
         href="/news"
-        className="mt-10 inline-block bg-[#14213d] text-white px-6 py-3 rounded-md shadow hover:bg-[#48b6e8] transition-all"
+        className="mt-6 md:mt-10 inline-block bg-[#14213d] text-white px-5 py-2 md:px-6 md:py-3 rounded-md text-sm md:text-base shadow hover:bg-[#48b6e8] transition-all"
       >
         ニュース一覧を見る
       </a>
