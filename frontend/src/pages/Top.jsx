@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { newsAPI, formatDate, transformArticleData } from '../services/newsAPI';
 
 function Top() {
@@ -94,6 +95,24 @@ function Top() {
   }, []);
 
   return (
+    <>
+    <Helmet>
+      <title>株式会社Reang</title>
+      <meta name="description" content="株式会社Reang | 広島のWeb制作・業務システム開発" />
+      <meta name="keywords" content="株式会社Reang, Reang, 広島, 個人開発, Web制作, システム開発, DX支援, 業務効率化, ECサイト, 予約システム, 企業向けソリューション" />
+      <meta name="author" content="株式会社Reang" />
+      <meta name="robots" content="index, follow" />
+      <meta property="og:title" content="株式会社Reang | 広島のWeb制作・業務システム開発" />
+      <meta property="og:description" content="株式会社Reang | 広島のWeb制作・業務システム開発" />
+      <meta property="og:image" content="https://reang.jp/images/reang_ogp.png" />
+      <meta property="og:url" content="https://reang.jp" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="株式会社Reang" />
+      <meta property="og:locale" content="ja_JP" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="株式会社Reang | 広島のWeb制作・業務システム開発" />
+      <meta name="twitter:description" content="株式会社Reang | 広島のWeb制作・業務システム開発" />
+    </Helmet>
     <div className="min-h-screen bg-white text-brand-black">
       {/* Hero Section */}
       <section className="relative overflow-hidden text-white py-24 flex items-center">
@@ -420,6 +439,7 @@ function Top() {
         </div>
       </section>
     </div>
+    </>
   );
 }
 

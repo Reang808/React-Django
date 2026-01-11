@@ -1,5 +1,12 @@
+import { Helmet } from 'react-helmet-async';
+
 function Privacy() {
   return (
+    <>
+    <Helmet>
+      <title>プライバシーポリシー | 株式会社Reang</title>
+      <meta name="description" content="株式会社Reangのプライバシーポリシーについてご紹介します。" />
+    </Helmet>
     <div className="min-h-screen bg-gray-100 text-neutral-900 font-sans">
       {/* Hero Section */}
       <section className="bg-linear-to-br from-[#48b6e8] via-white to-[#48b6e8] text-white py-24">
@@ -168,6 +175,7 @@ function Privacy() {
         </div>
       </section>
     </div>
+    </>
   );
 }
 

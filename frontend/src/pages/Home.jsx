@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Hero from "../components/hero/Hero";
+import { Helmet } from 'react-helmet-async';
 import SectionTabs from "../components/SectionTabs";
 import TopAbout from "../components/top/TopAbout";
 import TopService from "../components/top/TopService";
@@ -17,6 +18,24 @@ const Home = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>株式会社Reang</title>
+      <meta name="description" content="株式会社Reang | 広島の業務システム開発・DX支援・Webサイト制作" />
+      <meta name="keywords" content="株式会社Reang, Reang, 広島, 個人開発, Web制作, システム開発, DX支援, 業務効率化, ECサイト, 予約システム, 企業向けソリューション" />
+      <meta name="author" content="株式会社Reang" />
+      <meta name="robots" content="index, follow" />
+      <meta property="og:title" content="株式会社Reang | 広島の業務システム開発・DX支援・Webサイト制作" />
+      <meta property="og:description" content="株式会社Reang | 広島の業務システム開発・DX支援・Webサイト制作" />
+      <meta property="og:image" content="https://reang.jp/images/reang_ogp.png" />
+      <meta property="og:url" content="https://reang.jp" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="株式会社Reang" />
+      <meta property="og:locale" content="ja_JP" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="株式会社Reang | 広島の業務システム開発・DX支援・Webサイト制作" />
+      <meta name="twitter:description" content="株式会社Reang | 広島の業務システム開発・DX支援・Webサイト制作" />
+    </Helmet>
     <div className="w-full flex flex-col items-center overflow-hidden">
 
       {/* ------------------------- */}
@@ -103,6 +122,7 @@ const Home = () => {
       </div>
 
     </div>
+    </>
   );
 };
 
