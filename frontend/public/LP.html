@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLOW English | 3ヶ月で英語が話せる - ビジネス英語コーチング</title>
+  <meta name="description" content="専属コーチがあなたの英語学習を徹底サポート。3ヶ月の短期集中プログラムで、ビジネスで通用する英語力を身につける。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Noto+Sans+JP:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-deep: #0c1220;
+      --color-navy: #1a2438;
+      --color-slate: #3d4f6f;
+      --color-steel: #6b7c99;
+      --color-mist: #9aa8bd;
+      --color-cloud: #e8ecf2;
+      --color-white: #ffffff;
+      --color-cream: #f8f9fb;
+      --color-accent: #2563eb;
+      --color-accent-light: #3b82f6;
+      --color-accent-glow: rgba(37, 99, 235, 0.15);
+      --color-gold: #f59e0b;
+      --color-success: #10b981;
+      --font-display: 'Instrument Serif', serif;
+      --font-heading: 'DM Sans', sans-serif;
+      --font-body: 'Noto Sans JP', sans-serif;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-cream);
+      color: var(--color-deep);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ========================================
+       Header
+    ======================================== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-style: italic;
+      color: var(--color-accent);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-text {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-deep);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-menu a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-slate);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--color-deep);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .header-phone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--color-slate);
+    }
+
+    .header-phone svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--color-steel);
+    }
+
+    .header-phone strong {
+      font-weight: 600;
+      color: var(--color-deep);
+      letter-spacing: 0.02em;
+    }
+
+    .btn-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.25s var(--ease-out-expo);
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-header:hover {
+      background: var(--color-accent-light);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-header svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ========================================
+       Hero Section
+    ======================================== */
+    .hero {
+      min-height: 100vh;
+      padding: 72px 0 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: linear-gradient(135deg, var(--color-cream) 0%, #f0f4f8 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background decorations */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 80px 80px 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-white);
+      padding: 8px 16px 8px 10px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-slate);
+      width: fit-content;
+      margin-bottom: 28px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      animation: slideUp 0.8s var(--ease-out-expo) 0.2s both;
+    }
+
+    .hero-badge-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, var(--color-gold), #fbbf24);
+      border-radius: 50%;
+      font-size: 12px;
+    }
+
+    .hero-badge span {
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title {
+      font-family: var(--font-body);
+      font-size: clamp(36px, 4.5vw, 54px);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--color-deep);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+      animation: slideUp 0.8s var(--ease-out-expo) 0.35s both;
+    }
+
+    .hero-title-accent {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--color-accent);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--color-slate);
+      margin-bottom: 24px;
+      animation: slideUp 0.8s var(--ease-out-expo) 0.45s both;
+    }
+
+    .hero-description {
+      font-size: 15px;
+      color: var(--color-steel);
+      max-width: 480px;
+      margin-bottom: 36px;
+      line-height: 1.9;
+      animation: slideUp 0.8s var(--ease-out-expo) 0.55s both;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 40px;
+      animation: slideUp 0.8s var(--ease-out-expo) 0.65s both;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-stat-number {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-deep);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .hero-stat-number span {
+      font-size: 18px;
+      color: var(--color-accent);
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--color-steel);
+      margin-top: 6px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      animation: slideUp 0.8s var(--ease-out-expo) 0.75s both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 32px;
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 12px;
+      transition: all 0.3s var(--ease-out-expo);
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s var(--ease-out-expo);
+    }
+
+    .btn-primary:hover svg {
+      transform: translateX(4px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 32px;
+      background: var(--color-white);
+      color: var(--color-deep);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 12px;
+      border: 1px solid var(--color-cloud);
+      transition: all 0.3s var(--ease-out-expo);
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-cream);
+      border-color: var(--color-mist);
+    }
+
+    .btn-secondary svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--color-accent);
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--color-steel);
+      animation: slideUp 0.8s var(--ease-out-expo) 0.85s both;
+    }
+
+    .hero-note svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--color-success);
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+      overflow: hidden;
+    }
+
+    .hero-visual-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(165deg, #1e3a5f 0%, #0f2744 50%, #0a1929 100%);
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .hero-visual-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .hero-card {
+      position: relative;
+      z-index: 2;
+      background: var(--color-white);
+      border-radius: 20px;
+      padding: 32px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 
+        0 25px 80px rgba(0, 0, 0, 0.2),
+        0 10px 30px rgba(0, 0, 0, 0.1);
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(0.5deg); }
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-cloud);
+      margin-bottom: 20px;
+    }
+
+    .hero-card-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--color-accent), #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-card-user h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-deep);
+      margin-bottom: 2px;
+    }
+
+    .hero-card-user p {
+      font-size: 12px;
+      color: var(--color-steel);
+    }
+
+    .hero-card-badge {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--color-success);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .hero-card-progress {
+      margin-bottom: 24px;
+    }
+
+    .hero-card-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .hero-card-progress-header span {
+      font-size: 13px;
+      color: var(--color-slate);
+      font-weight: 500;
+    }
+
+    .hero-card-progress-header strong {
+      font-size: 14px;
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+
+    .hero-card-progress-bar {
+      height: 8px;
+      background: var(--color-cloud);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .hero-card-progress-fill {
+      height: 100%;
+      width: 78%;
+      background: linear-gradient(90deg, var(--color-accent), #6366f1);
+      border-radius: 10px;
+      animation: progressGrow 1.5s var(--ease-out-expo) 1s both;
+    }
+
+    @keyframes progressGrow {
+      from { width: 0; }
+      to { width: 78%; }
+    }
+
+    .hero-card-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .hero-card-stat {
+      text-align: center;
+      padding: 16px 8px;
+      background: var(--color-cream);
+      border-radius: 12px;
+    }
+
+    .hero-card-stat-num {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-deep);
+      line-height: 1;
+    }
+
+    .hero-card-stat-label {
+      font-size: 10px;
+      color: var(--color-steel);
+      margin-top: 4px;
+    }
+
+    .hero-card-schedule {
+      background: var(--color-cream);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .hero-card-schedule-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-slate);
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .hero-card-lesson {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: var(--color-white);
+      border-radius: 10px;
+      border: 1px solid var(--color-cloud);
+    }
+
+    .hero-card-lesson-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--color-accent-glow), rgba(99, 102, 241, 0.1));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-card-lesson-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--color-accent);
+    }
+
+    .hero-card-lesson-info h5 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-deep);
+      margin-bottom: 2px;
+    }
+
+    .hero-card-lesson-info p {
+      font-size: 11px;
+      color: var(--color-steel);
+    }
+
+    .hero-card-lesson-time {
+      margin-left: auto;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-accent);
+    }
+
+    /* Floating Elements */
+    .floating-testimonial {
+      position: absolute;
+      bottom: 100px;
+      left: 20px;
+      background: var(--color-white);
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      max-width: 240px;
+      z-index: 3;
+      animation: floatLeft 5s ease-in-out infinite;
+    }
+
+    @keyframes floatLeft {
+      0%, 100% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(10px) translateY(-8px); }
+    }
+
+    .floating-testimonial-stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 8px;
+    }
+
+    .floating-testimonial-stars svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--color-gold);
+      stroke: var(--color-gold);
+    }
+
+    .floating-testimonial p {
+      font-size: 12px;
+      color: var(--color-slate);
+      line-height: 1.6;
+    }
+
+    .floating-testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .floating-testimonial-author-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f472b6, #ec4899);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--color-white);
+    }
+
+    .floating-testimonial-author span {
+      font-size: 11px;
+      color: var(--color-steel);
+    }
+
+    .floating-metric {
+      position: absolute;
+      top: 140px;
+      right: 40px;
+      background: var(--color-white);
+      padding: 14px 18px;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      z-index: 3;
+      animation: floatRight 4s ease-in-out infinite 0.5s;
+    }
+
+    @keyframes floatRight {
+      0%, 100% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(-8px) translateY(-6px); }
+    }
+
+    .floating-metric-label {
+      font-size: 10px;
+      color: var(--color-steel);
+      margin-bottom: 4px;
+    }
+
+    .floating-metric-value {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-success);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      header {
+        padding: 0 24px;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        padding: 60px 32px;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-phone {
+        display: none;
+      }
+
+      .hero-content {
+        padding: 48px 20px;
+      }
+
+      .hero-stats {
+        gap: 20px;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <a href="#" class="logo">
+        <span class="logo-mark">Flow</span>
+        <span class="logo-text">English</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="#">プログラム内容</a>
+        <a href="#">料金プラン</a>
+        <a href="#">受講生の声</a>
+        <a href="#">コーチ紹介</a>
+        <a href="#">よくある質問</a>
+      </nav>
+    </div>
+    <div class="header-right">
+      <div class="header-phone">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        <strong>0120-987-654</strong>
+      </div>
+      <a href="#" class="btn-header">
+        無料カウンセリング
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-icon">🏆</span>
+        受講満足度 <span>98.2%</span>（2024年実績）
+      </div>
+
+      <h1 class="hero-title">
+        3ヶ月で、<br>
+        <span class="hero-title-accent">英語が話せる</span>自分へ。
+      </h1>
+
+      <p class="hero-subtitle">
+        専属コーチ × 科学的メソッドで、確実に伸ばす。
+      </p>
+
+      <p class="hero-description">
+        FLOW Englishは、忙しいビジネスパーソンのための短期集中型英語コーチング。
+        あなた専属のコーチが、学習計画から日々の進捗管理まで徹底サポート。
+        3ヶ月後、会議で英語を話す自分に出会えます。
+      </p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number">3,200<span>名+</span></div>
+          <div class="hero-stat-label">累計受講者数</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">96<span>%</span></div>
+          <div class="hero-stat-label">目標達成率</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">+185<span>点</span></div>
+          <div class="hero-stat-label">TOEIC平均UP</div>
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <a href="#" class="btn-primary">
+          無料カウンセリングを予約
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href="#" class="btn-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          サービス紹介動画
+        </a>
+      </div>
+
+      <p class="hero-note">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        30日間全額返金保証・入会金¥0キャンペーン中
+      </p>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-visual-bg"></div>
+      <div class="hero-visual-pattern"></div>
+
+      <!-- Main Card -->
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <div class="hero-card-avatar">COACH</div>
+          <div class="hero-card-user">
+            <h4>田中 美咲 さん</h4>
+            <p>IT企業 マネージャー / 受講8週目</p>
+          </div>
+          <div class="hero-card-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="12" height="12">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+            順調
+          </div>
+        </div>
+
+        <div class="hero-card-progress">
+          <div class="hero-card-progress-header">
+            <span>プログラム進捗</span>
+            <strong>78% 完了</strong>
+          </div>
+          <div class="hero-card-progress-bar">
+            <div class="hero-card-progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="hero-card-stats">
+          <div class="hero-card-stat">
+            <div class="hero-card-stat-num">56</div>
+            <div class="hero-card-stat-label">学習日数</div>
+          </div>
+          <div class="hero-card-stat">
+            <div class="hero-card-stat-num">142h</div>
+            <div class="hero-card-stat-label">総学習時間</div>
+          </div>
+          <div class="hero-card-stat">
+            <div class="hero-card-stat-num">+120</div>
+            <div class="hero-card-stat-label">TOEIC予測</div>
+          </div>
+        </div>
+
+        <div class="hero-card-schedule">
+          <div class="hero-card-schedule-title">📅 今日のセッション</div>
+          <div class="hero-card-lesson">
+            <div class="hero-card-lesson-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div class="hero-card-lesson-info">
+              <h5>ビジネスプレゼン実践</h5>
+              <p>Coach: Michael Thompson</p>
+            </div>
+            <div class="hero-card-lesson-time">19:00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Testimonial -->
+      <div class="floating-testimonial">
+        <div class="floating-testimonial-stars">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p>「海外クライアントとの会議で、自信を持って発言できるようになりました」</p>
+        <div class="floating-testimonial-author">
+          <div class="floating-testimonial-author-avatar">K</div>
+          <span>佐藤 健一さん（38歳）</span>
+        </div>
+      </div>
+
+      <!-- Floating Metric -->
+      <div class="floating-metric">
+        <div class="floating-metric-label">TOEIC スコアUP</div>
+        <div class="floating-metric-value">+185点</div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

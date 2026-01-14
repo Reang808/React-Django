@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YUKI TANAKA - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Noto Sans JP', sans-serif; 
+      background: #0a0a0a; 
+      color: white;
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      width: 100%;
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      mix-blend-mode: difference;
+    }
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    nav { display: flex; gap: 40px; }
+    nav a { 
+      text-decoration: none; 
+      color: white; 
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3), transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 115, 0.2), transparent 40%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-label {
+      font-size: 12px;
+      letter-spacing: 4px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 100px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 24px;
+      letter-spacing: -2px;
+    }
+    .hero-desc {
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+    .scroll-indicator span {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Works */
+    .works {
+      padding: 120px 48px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 60px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.4);
+    }
+    .section-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+    }
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .work-card {
+      position: relative;
+      aspect-ratio: 16/10;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .work-bg {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+    }
+    .work-card:nth-child(1) .work-bg { background: linear-gradient(135deg, #667eea, #764ba2); }
+    .work-card:nth-child(2) .work-bg { background: linear-gradient(135deg, #f093fb, #f5576c); }
+    .work-card:nth-child(3) .work-bg { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+    .work-card:nth-child(4) .work-bg { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+    .work-card:hover .work-bg { transform: scale(1.05); }
+    .work-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 32px;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    }
+    .work-tag {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .work-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    /* About */
+    .about {
+      padding: 120px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about-image {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+    }
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .about-content h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .about-content p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      line-height: 2;
+      margin-bottom: 40px;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .skill-tag {
+      background: rgba(255,255,255,0.1);
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-size: 13px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Contact */
+    .contact {
+      padding: 120px 48px;
+      text-align: center;
+      background: linear-gradient(to bottom, #0a0a0a, #1a1a2e);
+    }
+    .contact h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .contact p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+    .contact-btn {
+      display: inline-block;
+      background: white;
+      color: #0a0a0a;
+      padding: 20px 48px;
+      border-radius: 40px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    .contact-btn:hover { transform: scale(1.05); }
+
+    /* Footer */
+    footer {
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    .social-links {
+      display: flex;
+      gap: 24px;
+    }
+    .social-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 13px;
+    }
+    .copyright {
+      color: rgba(255,255,255,0.3);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">YUKI.T</div>
+    <nav>
+      <a href="#">WORKS</a>
+      <a href="#">ABOUT</a>
+      <a href="#">CONTACT</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-label">CREATIVE DEVELOPER</p>
+      <h1>YUKI<br>TANAKA</h1>
+      <p class="hero-desc">デザインとテクノロジーの境界を探求する<br>クリエイティブデベロッパー</p>
+    </div>
+    <div class="scroll-indicator">
+      <span>SCROLL</span>
+      <span>↓</span>
+    </div>
+  </section>
+
+  <section class="works">
+    <div class="section-header">
+      <div class="section-title">SELECTED WORKS</div>
+      <div class="section-num">04</div>
+    </div>
+    <div class="works-grid">
+      <div class="work-card">
+        <div class="work-bg">🎨</div>
+        <div class="work-info">
+          <div class="work-tag">WEB DESIGN</div>
+          <div class="work-title">Brand Identity</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-bg">📱</div>
+        <div class="work-info">
+          <div class="work-tag">APP DESIGN</div>
+          <div class="work-title">Finance App</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-bg">🖥️</div>
+        <div class="work-info">
+          <div class="work-tag">WEBSITE</div>
+          <div class="work-title">E-commerce Platform</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-bg">✨</div>
+        <div class="work-info">
+          <div class="work-tag">INTERACTIVE</div>
+          <div class="work-title">3D Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-image">👨‍💻</div>
+    <div class="about-content">
+      <h2>About Me</h2>
+      <p>東京を拠点に活動するクリエイティブデベロッパー。デザインと開発の両軸でデジタルプロダクトを制作しています。美しいビジュアルと滑らかなインタラクションで、記憶に残る体験を創ります。</p>
+      <div class="skills">
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">Next.js</span>
+        <span class="skill-tag">Three.js</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Motion Design</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Let's work together</h2>
+    <p>新しいプロジェクトのご相談、お待ちしています</p>
+    <a href="#" class="contact-btn">GET IN TOUCH</a>
+  </section>
+
+  <footer>
+    <div class="footer-logo">YUKI.T</div>
+    <div class="social-links">
+      <a href="#">Twitter</a>
+      <a href="#">GitHub</a>
+      <a href="#">Dribbble</a>
+    </div>
+    <div class="copyright">© 2025</div>
+  </footer>
+</body>
+</html>

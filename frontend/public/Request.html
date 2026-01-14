@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>株式会社セールスブリッジ | BtoB営業支援・営業代行のプロフェッショナル</title>
+  <meta name="description" content="セールスブリッジは、インサイドセールス代行・営業コンサルティングを通じて、貴社の売上拡大を支援するBtoB営業のプロ集団です。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-dark: #0a0f1a;
+      --color-navy: #111827;
+      --color-slate: #1f2937;
+      --color-gray: #4b5563;
+      --color-silver: #9ca3af;
+      --color-light: #e5e7eb;
+      --color-white: #ffffff;
+      --color-cream: #f9fafb;
+      --color-primary: #0ea5e9;
+      --color-primary-dark: #0284c7;
+      --color-primary-light: #38bdf8;
+      --color-secondary: #06b6d4;
+      --color-accent: #22d3ee;
+      --color-success: #10b981;
+      --color-warning: #f59e0b;
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Noto Sans JP', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-cream);
+      color: var(--color-navy);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ========================================
+       Header
+    ======================================== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-mark::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 3px;
+      background: var(--color-white);
+      border-radius: 2px;
+      top: 12px;
+    }
+
+    .logo-mark::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border: 3px solid var(--color-white);
+      border-top: none;
+      border-left: none;
+      transform: rotate(-45deg);
+      bottom: 10px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-main {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-navy);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .logo-sub {
+      font-size: 9px;
+      font-weight: 500;
+      color: var(--color-gray);
+      letter-spacing: 0.08em;
+    }
+
+    .header-center {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-menu a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-slate);
+      text-decoration: none;
+      padding: 8px 0;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-primary);
+      transition: width 0.3s var(--ease-out);
+    }
+
+    .nav-menu a:hover {
+      color: var(--color-primary);
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-tel {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-right: 16px;
+      border-right: 1px solid var(--color-light);
+    }
+
+    .header-tel-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(14, 165, 233, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-tel-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--color-primary);
+    }
+
+    .header-tel-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-tel-label {
+      font-size: 9px;
+      color: var(--color-gray);
+      letter-spacing: 0.05em;
+    }
+
+    .header-tel-number {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-navy);
+      letter-spacing: 0.02em;
+    }
+
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+      color: var(--color-white);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s var(--ease-out);
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    }
+
+    .btn-contact:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+    }
+
+    .btn-contact svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ========================================
+       Hero Section
+    ======================================== */
+    .hero {
+      min-height: 100vh;
+      padding-top: 72px;
+      background: linear-gradient(165deg, var(--color-dark) 0%, var(--color-navy) 50%, var(--color-slate) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 60% 60%, rgba(34, 211, 238, 0.05) 0%, transparent 30%);
+    }
+
+    .hero-grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      min-height: calc(100vh - 72px);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content {
+      color: var(--color-white);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 10px 18px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s var(--ease-out) 0.1s both;
+    }
+
+    .hero-badge-icon {
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, var(--color-warning), #fbbf24);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+
+    .hero-badge-text {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-light);
+      letter-spacing: 0.02em;
+    }
+
+    .hero-badge-text span {
+      color: var(--color-accent);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 4.5vw, 52px);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+      animation: fadeUp 0.8s var(--ease-out) 0.2s both;
+    }
+
+    .hero-title-accent {
+      background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-description {
+      font-size: 16px;
+      color: var(--color-silver);
+      line-height: 1.9;
+      margin-bottom: 36px;
+      max-width: 500px;
+      animation: fadeUp 0.8s var(--ease-out) 0.3s both;
+    }
+
+    .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 40px;
+      animation: fadeUp 0.8s var(--ease-out) 0.4s both;
+    }
+
+    .hero-feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-light);
+    }
+
+    .hero-feature svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--color-primary-light);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 48px;
+      animation: fadeUp 0.8s var(--ease-out) 0.5s both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 36px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+      color: var(--color-white);
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.3s var(--ease-out);
+      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(14, 165, 233, 0.45);
+    }
+
+    .btn-primary svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s var(--ease-out);
+    }
+
+    .btn-primary:hover svg {
+      transform: translateX(4px);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 36px;
+      background: transparent;
+      color: var(--color-white);
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-outline svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .hero-clients {
+      animation: fadeUp 0.8s var(--ease-out) 0.6s both;
+    }
+
+    .hero-clients-label {
+      font-size: 11px;
+      color: var(--color-silver);
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .hero-clients-logos {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      opacity: 0.5;
+    }
+
+    .client-logo {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-silver);
+      letter-spacing: 0.05em;
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-card-main {
+      background: var(--color-white);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 440px;
+      animation: cardFloat 7s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-14px) rotate(0.5deg); }
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-light);
+    }
+
+    .hero-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-navy);
+    }
+
+    .hero-card-period {
+      font-size: 11px;
+      color: var(--color-gray);
+      background: var(--color-cream);
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+
+    .hero-card-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .hero-card-stat {
+      background: var(--color-cream);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .hero-card-stat-value {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--color-navy);
+      line-height: 1;
+    }
+
+    .hero-card-stat-value span {
+      font-size: 16px;
+      color: var(--color-primary);
+    }
+
+    .hero-card-stat-label {
+      font-size: 11px;
+      color: var(--color-gray);
+      margin-top: 6px;
+    }
+
+    .hero-card-stat-change {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--color-success);
+      margin-top: 8px;
+      padding: 4px 8px;
+      background: rgba(16, 185, 129, 0.1);
+      border-radius: 4px;
+    }
+
+    .hero-card-stat-change svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .hero-card-chart {
+      background: var(--color-cream);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero-card-chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .hero-card-chart-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-slate);
+    }
+
+    .hero-card-chart-legend {
+      display: flex;
+      gap: 12px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      color: var(--color-gray);
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .legend-dot.primary {
+      background: var(--color-primary);
+    }
+
+    .legend-dot.secondary {
+      background: var(--color-light);
+    }
+
+    .chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      height: 100px;
+    }
+
+    .chart-bar-group {
+      flex: 1;
+      display: flex;
+      gap: 4px;
+      align-items: flex-end;
+    }
+
+    .chart-bar {
+      flex: 1;
+      border-radius: 4px 4px 0 0;
+      animation: barGrow 1s var(--ease-out) both;
+    }
+
+    .chart-bar.primary {
+      background: linear-gradient(to top, var(--color-primary), var(--color-primary-light));
+    }
+
+    .chart-bar.secondary {
+      background: var(--color-light);
+    }
+
+    @keyframes barGrow {
+      from { height: 0; }
+    }
+
+    .chart-bar-group:nth-child(1) .chart-bar.primary { height: 45%; animation-delay: 0.1s; }
+    .chart-bar-group:nth-child(1) .chart-bar.secondary { height: 30%; animation-delay: 0.15s; }
+    .chart-bar-group:nth-child(2) .chart-bar.primary { height: 60%; animation-delay: 0.2s; }
+    .chart-bar-group:nth-child(2) .chart-bar.secondary { height: 40%; animation-delay: 0.25s; }
+    .chart-bar-group:nth-child(3) .chart-bar.primary { height: 55%; animation-delay: 0.3s; }
+    .chart-bar-group:nth-child(3) .chart-bar.secondary { height: 35%; animation-delay: 0.35s; }
+    .chart-bar-group:nth-child(4) .chart-bar.primary { height: 75%; animation-delay: 0.4s; }
+    .chart-bar-group:nth-child(4) .chart-bar.secondary { height: 45%; animation-delay: 0.45s; }
+    .chart-bar-group:nth-child(5) .chart-bar.primary { height: 85%; animation-delay: 0.5s; }
+    .chart-bar-group:nth-child(5) .chart-bar.secondary { height: 50%; animation-delay: 0.55s; }
+    .chart-bar-group:nth-child(6) .chart-bar.primary { height: 100%; animation-delay: 0.6s; }
+    .chart-bar-group:nth-child(6) .chart-bar.secondary { height: 60%; animation-delay: 0.65s; }
+
+    .hero-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.08), rgba(6, 182, 212, 0.05));
+      border-radius: 10px;
+      border: 1px solid rgba(14, 165, 233, 0.15);
+    }
+
+    .hero-card-footer-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-card-footer-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--color-white);
+    }
+
+    .hero-card-footer-text h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-navy);
+      margin-bottom: 2px;
+    }
+
+    .hero-card-footer-text p {
+      font-size: 11px;
+      color: var(--color-gray);
+    }
+
+    /* Floating Elements */
+    .floating-metric {
+      position: absolute;
+      background: var(--color-white);
+      border-radius: 12px;
+      padding: 16px 20px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+      z-index: 3;
+    }
+
+    .floating-metric-1 {
+      top: 20px;
+      left: -40px;
+      animation: floatLeft 5s ease-in-out infinite;
+    }
+
+    .floating-metric-2 {
+      bottom: 40px;
+      right: -30px;
+      animation: floatRight 6s ease-in-out infinite 0.5s;
+    }
+
+    @keyframes floatLeft {
+      0%, 100% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(10px) translateY(-12px); }
+    }
+
+    @keyframes floatRight {
+      0%, 100% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(-8px) translateY(-10px); }
+    }
+
+    .floating-metric-label {
+      font-size: 10px;
+      color: var(--color-gray);
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .floating-metric-value {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--color-navy);
+    }
+
+    .floating-metric-value span {
+      font-size: 14px;
+      color: var(--color-primary);
+    }
+
+    .floating-metric-change {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      color: var(--color-success);
+      margin-top: 4px;
+    }
+
+    .floating-metric-change svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* Bottom Stats Bar */
+    .hero-stats-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 24px 40px;
+      z-index: 10;
+    }
+
+    .hero-stats-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+
+    .hero-stat-item {
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-stat-number {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--color-white);
+      line-height: 1;
+    }
+
+    .hero-stat-number span {
+      font-size: 18px;
+      color: var(--color-primary-light);
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--color-silver);
+      margin-top: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .header-container {
+        padding: 0 24px;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .header-tel {
+        display: none;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        padding: 60px 24px 140px;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .hero-stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .hero-stat-item:nth-child(2)::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-container {
+        padding: 48px 20px 160px;
+      }
+
+      .hero-features {
+        flex-direction: column;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-clients {
+        display: none;
+      }
+
+      .hero-stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .hero-stat-item::after {
+        display: none;
+      }
+
+      .hero-stat-number {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo">
+        <div class="logo-mark"></div>
+        <div class="logo-text">
+          <span class="logo-main">SalesBridge</span>
+          <span class="logo-sub">セールスブリッジ</span>
+        </div>
+      </a>
+
+      <div class="header-center">
+        <nav class="nav-menu">
+          <a href="#">会社概要</a>
+          <a href="#">サービス</a>
+          <a href="#">導入事例</a>
+          <a href="#">料金プラン</a>
+          <a href="#">お役立ち資料</a>
+          <a href="#">採用情報</a>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <div class="header-tel">
+          <div class="header-tel-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+          </div>
+          <div class="header-tel-info">
+            <span class="header-tel-label">お問い合わせ</span>
+            <span class="header-tel-number">03-6273-XXXX</span>
+          </div>
+        </div>
+        <a href="#" class="btn-contact">
+          無料相談
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-grid-pattern"></div>
+
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-icon">🏆</span>
+          <span class="hero-badge-text">営業代行会社 <span>顧客満足度No.1</span>（2024年調査）</span>
+        </div>
+
+        <h1 class="hero-title">
+          貴社の営業課題を<br>
+          <span class="hero-title-accent">成果</span>で解決する。
+        </h1>
+
+        <p class="hero-description">
+          セールスブリッジは、BtoB企業の営業活動を支援するプロフェッショナル集団です。
+          インサイドセールス代行からフィールドセールス支援まで、
+          貴社の売上拡大に「本気で」コミットします。
+        </p>
+
+        <div class="hero-features">
+          <div class="hero-feature">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            成果報酬プランあり
+          </div>
+          <div class="hero-feature">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            最短3日で稼働開始
+          </div>
+          <div class="hero-feature">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            専属チーム制
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#" class="btn-primary">
+            無料で相談する
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="#" class="btn-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            サービス資料
+          </a>
+        </div>
+
+        <div class="hero-clients">
+          <p class="hero-clients-label">導入企業（一部）</p>
+          <div class="hero-clients-logos">
+            <span class="client-logo">BECAUSE</span>
+            <span class="client-logo">Glotech</span>
+            <span class="client-logo">SYNERGY</span>
+            <span class="client-logo">NEXTONE</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <!-- Floating Metrics -->
+        <div class="floating-metric floating-metric-1">
+          <div class="floating-metric-label">平均アポ獲得率</div>
+          <div class="floating-metric-value">4.2<span>%</span></div>
+          <div class="floating-metric-change">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+            業界平均の2.1倍
+          </div>
+        </div>
+
+        <div class="floating-metric floating-metric-2">
+          <div class="floating-metric-label">継続率</div>
+          <div class="floating-metric-value">94<span>%</span></div>
+          <div class="floating-metric-change">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            12ヶ月以上
+          </div>
+        </div>
+
+        <!-- Main Card -->
+        <div class="hero-card-main">
+          <div class="hero-card-header">
+            <span class="hero-card-title">📊 営業成果レポート</span>
+            <span class="hero-card-period">2024年12月</span>
+          </div>
+
+          <div class="hero-card-stats">
+            <div class="hero-card-stat">
+              <div class="hero-card-stat-value">1,248<span>件</span></div>
+              <div class="hero-card-stat-label">コール数</div>
+              <div class="hero-card-stat-change">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+                +18%
+              </div>
+            </div>
+            <div class="hero-card-stat">
+              <div class="hero-card-stat-value">52<span>件</span></div>
+              <div class="hero-card-stat-label">商談獲得</div>
+              <div class="hero-card-stat-change">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+                +24%
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card-chart">
+            <div class="hero-card-chart-header">
+              <span class="hero-card-chart-title">月次推移</span>
+              <div class="hero-card-chart-legend">
+                <span class="legend-item"><span class="legend-dot primary"></span>商談数</span>
+                <span class="legend-item"><span class="legend-dot secondary"></span>前年</span>
+              </div>
+            </div>
+            <div class="chart-bars">
+              <div class="chart-bar-group">
+                <div class="chart-bar primary"></div>
+                <div class="chart-bar secondary"></div>
+              </div>
+              <div class="chart-bar-group">
+                <div class="chart-bar primary"></div>
+                <div class="chart-bar secondary"></div>
+              </div>
+              <div class="chart-bar-group">
+                <div class="chart-bar primary"></div>
+                <div class="chart-bar secondary"></div>
+              </div>
+              <div class="chart-bar-group">
+                <div class="chart-bar primary"></div>
+                <div class="chart-bar secondary"></div>
+              </div>
+              <div class="chart-bar-group">
+                <div class="chart-bar primary"></div>
+                <div class="chart-bar secondary"></div>
+              </div>
+              <div class="chart-bar-group">
+                <div class="chart-bar primary"></div>
+                <div class="chart-bar secondary"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card-footer">
+            <div class="hero-card-footer-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="hero-card-footer-text">
+              <h4>目標達成率 124%</h4>
+              <p>当月の商談目標を大幅に超過達成しました</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Stats Bar -->
+    <div class="hero-stats-bar">
+      <div class="hero-stats-container">
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">850<span>社+</span></div>
+          <div class="hero-stat-label">累計支援企業数</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">12<span>年</span></div>
+          <div class="hero-stat-label">サービス提供実績</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">98.2<span>%</span></div>
+          <div class="hero-stat-label">顧客満足度</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">2.4<span>倍</span></div>
+          <div class="hero-stat-label">平均商談数UP</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

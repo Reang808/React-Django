@@ -1,10 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from 'react-helmet-async';
+import { useSearchParams } from 'react-router-dom';
 import ServiceList from "../components/service/ServiceList";
 import SupportPlan from "../components/service/SupportPlan";
 
 const Service = () => {
-  const [active, setActive] = useState("services");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tabParam = searchParams.get('tab');
+  
+  // URLパラメータからタブを決定
+  const getInitialActive = () => {
+    if (tabParam === 'support') return 'support';
+    if (tabParam === 'system' || tabParam === 'visualization' || tabParam === 'web') return 'services';
+    return 'services';
+  };
+  
+  const [active, setActive] = useState(getInitialActive());
 
   const heroRef = useRef(null);
   const [heroVisible, setHeroVisible] = useState(false);
@@ -147,7 +158,7 @@ const Service = () => {
       <div
         className="transition-opacity duration-700 mt-16"
       >
-        {active === "services" && <ServiceList key="services" />}
+        {active === "services" && <ServiceList key="services" initialTab={tabParam} />}
         {active === "support" && <SupportPlan key="support" />}
       </div>
 

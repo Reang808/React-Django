@@ -4,11 +4,19 @@ import Customer from "./system/Customer";
 import Attendance from "./system/Attendance";
 import WebProductionService from "./website/WebProductionService";
 
-const ServiceList = () => {
+const ServiceList = ({ initialTab }) => {
   const listRef = useRef(null);
   const [showAnim, setShowAnim] = useState(false);
   
-  const [activeTab, setActiveTab] = useState("system");
+  // URLパラメータから初期タブを決定
+  const getInitialTab = () => {
+    if (initialTab === 'system' || initialTab === 'visualization' || initialTab === 'web') {
+      return initialTab;
+    }
+    return 'system';
+  };
+  
+  const [activeTab, setActiveTab] = useState(getInitialTab());
   const [activeSystem, setActiveSystem] = useState("stocksystemflow");
 
   useEffect(() => {

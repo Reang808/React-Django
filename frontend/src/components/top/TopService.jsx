@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const TopService = () => {
+  const navigate = useNavigate();
   const sectionRef = useRef(null);
   const [showAnim, setShowAnim] = useState(false);
 
@@ -35,24 +37,32 @@ const TopService = () => {
   { 
     title: "社内システム開発", 
     icon: "🖥️", 
-    desc: "在庫管理システム ・顧客管理システム(CRM)・勤怠シフト管理など。業務に合わせた専用システムを構築" 
+    desc: "在庫管理システム ・顧客管理システム(CRM)・勤怠シフト管理など。業務に合わせた専用システムを構築",
+    tab: "system"
   },
   { 
     title: "経営可視化システム", 
     icon: "📊", 
-    desc: "システム連携 + ダッシュボード + レポート自動生成。経営判断を支援するデータ基盤" 
+    desc: "システム連携 + ダッシュボード + レポート自動生成。経営判断を支援するデータ基盤",
+    tab: "visualization"
   },
   { 
     title: "Webサイト・LP制作", 
     icon: "🌐", 
-    desc: "・コーポレートサイトやサービスLP・ECサイト・ブログ採用サイトなど、多様なWeb制作に対応" 
+    desc: "・コーポレートサイトやサービスLP・ECサイト・ブログ採用サイトなど、多様なWeb制作に対応",
+    tab: "web"
   },
   { 
     title: "運用・改善サポート", 
     icon: "🛠️", 
-    desc: "納品後も安心してご利用いただけるよう、お客様の状況に合わせて柔軟にサポートします。" 
+    desc: "納品後も安心してご利用いただけるよう、お客様の状況に合わせて柔軟にサポートします。",
+    tab: "support"
   },
 ];
+
+  const handleCardClick = (tab) => {
+    navigate(`/service?tab=${tab}`);
+  };
 
   return (
     <div ref={sectionRef} className={`w-full flex flex-col items-center py-8 md:py-10 transition-all duration-700 ease-out ${showAnim ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
@@ -70,8 +80,9 @@ const TopService = () => {
         {services.map((item, index) => (
           <div
             key={index}
+            onClick={() => handleCardClick(item.tab)}
             className={`bg-white rounded-xl shadow p-4 md:p-6 flex flex-col items-center text-center 
-              transition-all duration-700 ease-out hover:-translate-y-1 hover:shadow-xl
+              transition-all duration-700 ease-out hover:-translate-y-1 hover:shadow-xl cursor-pointer
               ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
             style={{ transitionDelay: `${200 + index * 100}ms` }}
           >

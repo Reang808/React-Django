@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HARMONIA | 日本発サステナブルファッション</title>
+  <meta name="description" content="HARMONIAは、環境に配慮した素材と日本の職人技を融合させたサステナブルファッションブランドです。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-ink: #1a1a1a;
+      --color-charcoal: #3d3d3d;
+      --color-stone: #6b6b6b;
+      --color-mist: #a8a8a8;
+      --color-cloud: #e8e6e3;
+      --color-cream: #f7f5f2;
+      --color-white: #fefefe;
+      --color-accent: #8b7355;
+      --color-accent-light: #b39d7a;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Zen Kaku Gothic New', sans-serif;
+      --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      background: var(--color-cream);
+      color: var(--color-ink);
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+      overflow-x: hidden;
+    }
+
+    /* Announcement Bar */
+    .announcement {
+      background: var(--color-ink);
+      color: var(--color-white);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+    }
+
+    .announcement a {
+      color: var(--color-accent-light);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* Header */
+    header {
+      background: var(--color-white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--color-cloud);
+    }
+
+    .header-main {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 18px 48px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .header-left {
+      display: flex;
+      gap: 32px;
+    }
+
+    .header-left a {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-charcoal);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .header-left a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--color-ink);
+      transition: width 0.3s var(--transition-smooth);
+    }
+
+    .header-left a:hover::after {
+      width: 100%;
+    }
+
+    .logo {
+      text-align: center;
+    }
+
+    .logo a {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--color-ink);
+      text-decoration: none;
+      letter-spacing: 0.25em;
+    }
+
+    .logo-sub {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: var(--color-stone);
+      margin-top: 2px;
+    }
+
+    .header-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .header-icon {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--color-charcoal);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .header-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 1.5;
+    }
+
+    .cart-count {
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-size: 9px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 140px);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px;
+      background: var(--color-white);
+    }
+
+    .hero-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--color-accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--color-accent);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 5vw, 64px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 28px;
+      color: var(--color-ink);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      color: var(--color-stone);
+      max-width: 420px;
+      margin-bottom: 48px;
+      line-height: 2;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--color-ink);
+      color: var(--color-white);
+      padding: 18px 40px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-decoration: none;
+      transition: all 0.4s var(--transition-smooth);
+      width: fit-content;
+    }
+
+    .hero-cta:hover {
+      background: var(--color-charcoal);
+      gap: 24px;
+    }
+
+    .hero-cta svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s var(--transition-smooth);
+    }
+
+    .hero-cta:hover svg {
+      transform: translateX(4px);
+    }
+
+    .hero-visual {
+      position: relative;
+      background: linear-gradient(145deg, #d8d4cf 0%, #c4beb6 50%, #b8b0a6 100%);
+      overflow: hidden;
+    }
+
+    .hero-image-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-product-card {
+      background: var(--color-white);
+      padding: 32px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+      max-width: 320px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .hero-product-image {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #e8e4df 0%, #d4cec6 100%);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--color-stone);
+      letter-spacing: 0.1em;
+    }
+
+    .hero-product-info {
+      text-align: center;
+    }
+
+    .hero-product-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .hero-product-category {
+      font-size: 10px;
+      color: var(--color-mist);
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+    }
+
+    .hero-product-price {
+      font-size: 15px;
+      color: var(--color-accent);
+      font-weight: 500;
+    }
+
+    .hero-badge {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      background: var(--color-white);
+      padding: 16px 20px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    /* Category Section */
+    .categories {
+      padding: 100px 48px;
+      background: var(--color-cream);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+
+    .section-header p {
+      font-size: 12px;
+      color: var(--color-stone);
+      letter-spacing: 0.15em;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .category-card {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      cursor: pointer;
+      group: category;
+    }
+
+    .category-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.7s var(--transition-smooth);
+    }
+
+    .category-card:nth-child(1) .category-bg {
+      background: linear-gradient(165deg, #c4bdb3 0%, #a89f94 100%);
+    }
+
+    .category-card:nth-child(2) .category-bg {
+      background: linear-gradient(165deg, #b8c4c0 0%, #9aaba5 100%);
+    }
+
+    .category-card:nth-child(3) .category-bg {
+      background: linear-gradient(165deg, #d1c8bd 0%, #bfb3a5 100%);
+    }
+
+    .category-card:hover .category-bg {
+      transform: scale(1.08);
+    }
+
+    .category-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 36px;
+      background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%);
+    }
+
+    .category-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+    }
+
+    .category-name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--color-white);
+      margin-bottom: 4px;
+    }
+
+    .category-count {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.1em;
+    }
+
+    .category-arrow {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s var(--transition-smooth);
+    }
+
+    .category-arrow svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--color-white);
+    }
+
+    .category-card:hover .category-arrow {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Products Section */
+    .products {
+      padding: 100px 48px;
+      background: var(--color-white);
+    }
+
+    .products-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      max-width: 1200px;
+      margin: 0 auto 48px;
+    }
+
+    .products-header h2 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 400;
+    }
+
+    .products-header p {
+      font-size: 12px;
+      color: var(--color-stone);
+      margin-top: 4px;
+      letter-spacing: 0.1em;
+    }
+
+    .view-all {
+      font-size: 12px;
+      color: var(--color-charcoal);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.3s var(--transition-smooth);
+    }
+
+    .view-all:hover {
+      gap: 12px;
+    }
+
+    .view-all svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .product-image {
+      aspect-ratio: 3/4;
+      background: var(--color-cloud);
+      margin-bottom: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-image-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--color-mist);
+      letter-spacing: 0.1em;
+      transition: transform 0.5s var(--transition-smooth);
+    }
+
+    .product-card:hover .product-image-inner {
+      transform: scale(1.05);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--color-ink);
+      color: var(--color-white);
+      font-size: 9px;
+      padding: 4px 10px;
+      letter-spacing: 0.1em;
+    }
+
+    .product-tag.sold-out {
+      background: var(--color-stone);
+    }
+
+    .product-wishlist {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      background: var(--color-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s var(--transition-smooth);
+      cursor: pointer;
+    }
+
+    .product-wishlist svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--color-charcoal);
+    }
+
+    .product-card:hover .product-wishlist {
+      opacity: 1;
+    }
+
+    .product-info h3 {
+      font-size: 13px;
+      font-weight: 400;
+      margin-bottom: 4px;
+      color: var(--color-charcoal);
+    }
+
+    .product-category {
+      font-size: 10px;
+      color: var(--color-mist);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .product-price {
+      font-size: 14px;
+      color: var(--color-accent);
+      font-weight: 500;
+    }
+
+    .product-price .original {
+      text-decoration: line-through;
+      color: var(--color-mist);
+      margin-right: 8px;
+      font-weight: 300;
+    }
+
+    .product-colors {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .color-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid var(--color-cloud);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 80px 48px;
+      background: var(--color-cream);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-item {
+      text-align: center;
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--color-accent);
+      stroke-width: 1.2;
+    }
+
+    .feature-title {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .feature-desc {
+      font-size: 12px;
+      color: var(--color-stone);
+      line-height: 1.8;
+    }
+
+    /* Story Section */
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+    }
+
+    .story-image {
+      background: linear-gradient(135deg, #d4cec6 0%, #c0b8ad 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--color-stone);
+      letter-spacing: 0.1em;
+    }
+
+    .story-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px;
+      background: var(--color-white);
+    }
+
+    .story-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--color-accent);
+      margin-bottom: 20px;
+    }
+
+    .story-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+
+    .story-text {
+      font-size: 14px;
+      color: var(--color-stone);
+      line-height: 2.2;
+      margin-bottom: 36px;
+    }
+
+    .story-link {
+      font-size: 12px;
+      color: var(--color-charcoal);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--color-charcoal);
+      transition: gap 0.3s var(--transition-smooth);
+    }
+
+    .story-link:hover {
+      gap: 14px;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      padding: 100px 48px;
+      background: var(--color-ink);
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--color-white);
+      margin-bottom: 12px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+    }
+
+    .newsletter p {
+      font-size: 13px;
+      color: var(--color-mist);
+      margin-bottom: 36px;
+      letter-spacing: 0.05em;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 480px;
+      margin: 0 auto;
+      gap: 12px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 16px 20px;
+      border: 1px solid var(--color-charcoal);
+      background: transparent;
+      color: var(--color-white);
+      font-size: 13px;
+      font-family: var(--font-body);
+      letter-spacing: 0.05em;
+    }
+
+    .newsletter-form input::placeholder {
+      color: var(--color-stone);
+    }
+
+    .newsletter-form button {
+      padding: 16px 32px;
+      background: var(--color-white);
+      color: var(--color-ink);
+      border: none;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: background 0.3s var(--transition-smooth);
+    }
+
+    .newsletter-form button:hover {
+      background: var(--color-cloud);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--color-ink);
+      color: var(--color-white);
+      padding: 60px 48px 30px;
+      border-top: 1px solid var(--color-charcoal);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 48px;
+      max-width: 1200px;
+      margin: 0 auto 48px;
+    }
+
+    .footer-brand .logo {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: 0.2em;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 12px;
+      color: var(--color-stone);
+      line-height: 2;
+      margin-bottom: 20px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--color-charcoal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s var(--transition-smooth);
+    }
+
+    .footer-social a:hover {
+      background: var(--color-white);
+      border-color: var(--color-white);
+    }
+
+    .footer-social a:hover svg {
+      stroke: var(--color-ink);
+    }
+
+    .footer-social svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--color-mist);
+    }
+
+    .footer-title {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      margin-bottom: 24px;
+      color: var(--color-white);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 14px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--color-stone);
+      text-decoration: none;
+      transition: color 0.3s var(--transition-smooth);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-white);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      border-top: 1px solid var(--color-charcoal);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-bottom p {
+      font-size: 11px;
+      color: var(--color-stone);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-bottom nav {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom nav a {
+      font-size: 11px;
+      color: var(--color-stone);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 400px;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .story {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-main {
+        padding: 16px 24px;
+      }
+
+      .header-left {
+        display: none;
+      }
+
+      .hero-content {
+        padding: 48px 24px;
+      }
+
+      .categories,
+      .products,
+      .features {
+        padding: 60px 24px;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .story-content {
+        padding: 48px 24px;
+      }
+
+      .newsletter {
+        padding: 60px 24px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Announcement Bar -->
+  <div class="announcement">
+    新規会員登録で10%OFFクーポンプレゼント｜<a href="#">詳しくはこちら</a>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-main">
+      <nav class="header-left">
+        <a href="#">WOMEN</a>
+        <a href="#">MEN</a>
+        <a href="#">ACCESSORIES</a>
+        <a href="#">SALE</a>
+      </nav>
+
+      <div class="logo">
+        <a href="#">HARMONIA</a>
+        <div class="logo-sub">SUSTAINABLE FASHION</div>
+      </div>
+
+      <div class="header-right">
+        <a href="#" class="header-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+          </svg>
+        </a>
+        <a href="#" class="header-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+          </svg>
+        </a>
+        <a href="#" class="header-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+          </svg>
+        </a>
+        <a href="#" class="header-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+          </svg>
+          <span class="cart-count">2</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-label">2025 SPRING COLLECTION</span>
+      <h1 class="hero-title">心地よさと<br><em>美しさ</em>を纏う</h1>
+      <p class="hero-desc">
+        日本の職人技とサステナブルな素材が織りなす、
+        上質な日常着。自然と調和する暮らしのための一着を。
+      </p>
+      <a href="#" class="hero-cta">
+        COLLECTION を見る
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-badge">ORGANIC COTTON 100%</div>
+      <div class="hero-image-placeholder">
+        <div class="hero-product-card">
+          <div class="hero-product-image">PRODUCT IMAGE</div>
+          <div class="hero-product-info">
+            <div class="hero-product-category">WOMEN / TOPS</div>
+            <div class="hero-product-name">Relaxed Linen Blouse</div>
+            <div class="hero-product-price">¥16,500</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Section -->
+  <section class="categories">
+    <div class="section-header">
+      <h2>Categories</h2>
+      <p>カテゴリーから探す</p>
+    </div>
+    <div class="category-grid">
+      <div class="category-card">
+        <div class="category-bg"></div>
+        <div class="category-content">
+          <span class="category-label">WOMEN'S</span>
+          <h3 class="category-name">Tops & Blouses</h3>
+          <span class="category-count">42 items</span>
+        </div>
+        <div class="category-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+          </svg>
+        </div>
+      </div>
+      <div class="category-card">
+        <div class="category-bg"></div>
+        <div class="category-content">
+          <span class="category-label">UNISEX</span>
+          <h3 class="category-name">Outer & Jackets</h3>
+          <span class="category-count">28 items</span>
+        </div>
+        <div class="category-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+          </svg>
+        </div>
+      </div>
+      <div class="category-card">
+        <div class="category-bg"></div>
+        <div class="category-content">
+          <span class="category-label">ACCESSORIES</span>
+          <h3 class="category-name">Bags & Small Goods</h3>
+          <span class="category-count">36 items</span>
+        </div>
+        <div class="category-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products">
+    <div class="products-header">
+      <div>
+        <h2>New Arrivals</h2>
+        <p>新着アイテム</p>
+      </div>
+      <a href="#" class="view-all">
+        すべて見る
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-inner">PRODUCT IMAGE</div>
+          <span class="product-tag">NEW</span>
+          <div class="product-wishlist">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+            </svg>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">WOMEN / TOPS</span>
+          <h3>オーガニックコットン ギャザーブラウス</h3>
+          <span class="product-price">¥14,300</span>
+          <div class="product-colors">
+            <span class="color-dot" style="background: #f5f3f0;"></span>
+            <span class="color-dot" style="background: #d4cec6;"></span>
+            <span class="color-dot" style="background: #1a1a1a;"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-inner">PRODUCT IMAGE</div>
+          <div class="product-wishlist">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+            </svg>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">MEN / OUTER</span>
+          <h3>リネン混 ライトジャケット</h3>
+          <span class="product-price">¥28,600</span>
+          <div class="product-colors">
+            <span class="color-dot" style="background: #8b7355;"></span>
+            <span class="color-dot" style="background: #3d5a4c;"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-inner">PRODUCT IMAGE</div>
+          <span class="product-tag">SALE</span>
+          <div class="product-wishlist">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+            </svg>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">ACCESSORIES</span>
+          <h3>帆布トートバッグ M</h3>
+          <span class="product-price">
+            <span class="original">¥8,800</span>
+            ¥6,160
+          </span>
+          <div class="product-colors">
+            <span class="color-dot" style="background: #f5f3f0;"></span>
+            <span class="color-dot" style="background: #2d3a4a;"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-image-inner">PRODUCT IMAGE</div>
+          <span class="product-tag sold-out">SOLD OUT</span>
+          <div class="product-wishlist">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+            </svg>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">WOMEN / BOTTOMS</span>
+          <h3>リネンワイドパンツ</h3>
+          <span class="product-price">¥18,700</span>
+          <div class="product-colors">
+            <span class="color-dot" style="background: #c4bdb3;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+          </svg>
+        </div>
+        <h4 class="feature-title">送料無料</h4>
+        <p class="feature-desc">¥10,000以上のご購入で<br>全国送料無料</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+          </svg>
+        </div>
+        <h4 class="feature-title">返品・交換無料</h4>
+        <p class="feature-desc">到着後14日以内なら<br>返品・交換を承ります</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h4 class="feature-title">安心の後払い</h4>
+        <p class="feature-desc">コンビニ・銀行での<br>後払いに対応</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+          </svg>
+        </div>
+        <h4 class="feature-title">ギフトラッピング</h4>
+        <p class="feature-desc">大切な方への贈り物に<br>無料でラッピング</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="story">
+    <div class="story-image">BRAND IMAGE</div>
+    <div class="story-content">
+      <span class="story-label">OUR STORY</span>
+      <h2 class="story-title">自然と人が調和する<br>ものづくりを</h2>
+      <p class="story-text">
+        HARMONIAは2019年、「着る人にも、地球にも優しい服を」という想いから
+        東京で生まれました。オーガニックコットンやリサイクル繊維など、
+        環境に配慮した素材を使用し、日本国内の熟練した職人たちと共に、
+        長く愛される一着を丁寧に作り続けています。
+      </p>
+      <a href="#" class="story-link">
+        ブランドについて
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="14" height="14">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <h2>Newsletter</h2>
+    <p>新作情報やセールのお知らせをお届けします</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="メールアドレス">
+      <button type="submit">登録する</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">HARMONIA</div>
+        <p>
+          自然と調和する暮らしのための、<br>
+          サステナブルファッションブランド。<br>
+          2019年、東京にて創業。
+        </p>
+        <div class="footer-social">
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25z" />
+            </svg>
+          </a>
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+            </svg>
+          </a>
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-title">SHOP</h4>
+        <ul class="footer-links">
+          <li><a href="#">新着アイテム</a></li>
+          <li><a href="#">ウィメンズ</a></li>
+          <li><a href="#">メンズ</a></li>
+          <li><a href="#">アクセサリー</a></li>
+          <li><a href="#">セール</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">GUIDE</h4>
+        <ul class="footer-links">
+          <li><a href="#">ご利用ガイド</a></li>
+          <li><a href="#">サイズガイド</a></li>
+          <li><a href="#">配送について</a></li>
+          <li><a href="#">返品・交換</a></li>
+          <li><a href="#">お手入れ方法</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">SUPPORT</h4>
+        <ul class="footer-links">
+          <li><a href="#">よくあるご質問</a></li>
+          <li><a href="#">お問い合わせ</a></li>
+          <li><a href="#">店舗情報</a></li>
+          <li><a href="#">採用情報</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">COMPANY</h4>
+        <ul class="footer-links">
+          <li><a href="#">ブランドについて</a></li>
+          <li><a href="#">サステナビリティ</a></li>
+          <li><a href="#">特定商取引法に基づく表記</a></li>
+          <li><a href="#">プライバシーポリシー</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2019-2025 HARMONIA Inc. All rights reserved.</p>
+      <nav>
+        <a href="#">利用規約</a>
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">特定商取引法</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
